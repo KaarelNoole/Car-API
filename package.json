@@ -1,0 +1,23 @@
+{
+  "name": "car-api",
+  "version": "1.0.0",
+  "description": "We're building a car store API called the Auto API so you can see the different cars people have posted and are selling.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaarelNoole/Car-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaarelNoole/Car-API/issues"
+  },
+  "homepage": "https://github.com/KaarelNoole/Car-API#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
