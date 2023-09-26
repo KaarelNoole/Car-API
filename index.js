@@ -2,14 +2,11 @@ const app = require('express')()
 const port = 8080
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocument = require('./docs/swagger.json');
+import { brands } from './brands/data';
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
-const cars = [
-    {id: 1, Brand: 'Ford', model: 'Ford focus', year: 2016, origin: 'Germany'},
-    {id: 2, Brand: 'Tesla', model: 'Model S', year: 2016, origin: 'USA'},
-    {id: 3, Brand: 'Toyota', model: 'Yaris', year: 2020, origin: 'Japan'}
-]
+res.send(brands)
 
 app.get('/cars/:id', (req, res) => {
     const car = cars.find(c => c.id === parseInt(req.params.id));
