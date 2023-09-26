@@ -2,23 +2,19 @@ const app = require('express')()
 const port = 8080
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocument = require('./docs/swagger.json');
+const sellers = require("./Sellers/data")
 
-const sellers = [
-    {id: 1, name:"Martin",Email:"martinhobesalu@gmail.com",Phone: "56785234"},
-    {id: 2, name:"Kaarel", Email: "kaarelnoole@gmail.com", Phone:"7563567"}
-]
+app.get("/Sellers",(req,res)=>{
+    res.send(sellers.getAll())
+})
 
-app.get('/Sellers/:id', (req, res) => {
-    const seller = sellers.find(s => s.id === parseInt(req.params.id))
-    if (!seller) {
-       return(res.status(404).send("Seller with given id was not found"))
-    }
-    res.send(seller)
+app.get("/Sellers/:id",(req,res)=>{
+    res.send(sellers.getById(req.params.id))
 })
-app.get('/Sellers', (req, res) => {
-    res.send(sellers)
-})
+
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+res.send(brands)
+
 
 app.listen(port, () => {
     console.log(`API up at: http://localhost:${port}`);
