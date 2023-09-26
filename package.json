@@ -4,7 +4,8 @@
   "description": "We're building a car store API called the Auto API so you can see the different cars people have posted and are selling.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   "homepage": "https://github.com/KaarelNoole/Car-API#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "nodemon": "^3.0.1",
     "swagger-ui-express": "^5.0.0"
+  },
+  "nodemonConfig":{
+    "ext": "js,json,html,yaml"
   }
 }
