@@ -10,10 +10,12 @@ app.get("/Sellers",(req,res)=>{
 
 app.get("/Sellers/:id",(req,res)=>{
     res.send(sellers.getById(req.params.id))
+    if (foundThing === undefined) return res.status(404).send({error: 'seller not found'})
+    res.send(foundThing)
 })
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
-res.send(brands)
+res.send(sellers)
 
 
 app.listen(port, () => {
