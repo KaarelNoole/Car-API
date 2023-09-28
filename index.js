@@ -1,13 +1,11 @@
-const app = require('express')()
+const express = require('express')
+const app = express()
 const port = 8080
 const swaggerUI = require('swagger-ui-express')
-<<<<<<< HEAD
 const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml');
-=======
-const brands = require("./brands/data")
->>>>>>> 5f00ae0467775a97839e5a1ded9c4d3f202bda8e
 
+app.use(express.json())
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 app.get("/brands", (req,res) => {
@@ -22,8 +20,16 @@ app.get("/brands/:id", (req,res) => {
         })
     }
     res.send(foundThing)
-    
-})
+})    
+    app.post("/brands", (req, res) => {
+        brands.create({
+            brands:req.body.brands,
+            origin:req.body.origin
+        })
+        res.end()
+    })
+
+
 
 app.get("/models", (req,res) => {
     res.send(models.getAll())
