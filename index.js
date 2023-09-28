@@ -20,3 +20,16 @@ res.send(brands)
 app.listen(port, () => {
     console.log(`API up at: http://localhost:${port}`);
 })
+
+app.get("/Locations",(req,res)=>{
+    res.send(locations.getAll())
+})
+
+app.get("/Locations/:id",(req,res)=>{
+    res.send(locations.getById(req.params.id))
+    if (foundThing === undefined) return res.status(404).send({error: 'location not found'})
+    res.send(foundThing)
+})
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+res.send(locations)
