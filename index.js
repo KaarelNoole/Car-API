@@ -10,8 +10,18 @@ app.get("/cars", (req,res) => {
     res.send(brands.getAll())
 })
 
-app.get("/cars/:id", (req,res) => {
-    res.send(brands.getById(req.params.id))
+app.get("/models", (req,res) => {
+    res.send(models.getAll())
+})
+
+app.get("/models", (req,res) => {
+    const foundThing = models.getById(req.params.id)
+    if (foundThing === undefined) {
+        res.status(404).send({
+            error: "model not found"
+        })
+    }
+})
 })
 
 
