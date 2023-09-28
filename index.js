@@ -22,6 +22,17 @@ app.get("/models", (req,res) => {
         })
     }
 })
+app.get("/prices", (res,req) => {
+    res.send(prices.getAll())
+})
+
+app.get("/prices", (res,req) => {
+    const foundThing = prices.getById(req.params.id)
+    if (foundThing === undefined) {
+        res.status(404).send({
+            error:"price not found"
+        })
+    }
 })
 
 
