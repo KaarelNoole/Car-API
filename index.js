@@ -6,10 +6,6 @@ const brands = require("./cars/data")
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
-app.get("/cars", (req,res) => {
-    res.send(brands.getAll())
-})
-
 app.get("/models", (req,res) => {
     res.send(models.getAll())
 })
@@ -23,8 +19,20 @@ app.get("/models", (req,res) => {
     }
 })
 
-
-
-app.listen(port, () => {
-    console.log(`API up at: http://localhost:${port}`);
+app.post("/models", (req, res) => {
+    if (!reg.body.name || !reg.body.color) {
+        return res.status(400).send({error: "One or all parameter are missing"})
+    }
+   const createdModel =  models.create({
+        name:req.body.name,
+        color:req.body.color
+    })
+    res.status(201)
+    .location(`${getBaseurl(req)}/models/${createdModel.id}`)
+    .send/createdModel
 })
+
+function getBaseurl(request){
+    return (request.conncetion && request.conncetion.encrypted ? "https": "http")
+     + "://" +request.headers.host
+}
