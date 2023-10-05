@@ -17,34 +17,23 @@ app.get("/brands/:id", (req,res) => {
         })
     }
     res.send(foundThing)
-    
-})
-
-app.get("/models", (req,res) => {
-    res.send(models.getAll())
-})
-
-app.get("/models", (req,res) => {
-    const foundThing = models.getById(req.params.id)
-    if (foundThing === undefined) {
-        res.status(404).send({
-            error: "model not found"
+})    
+    app.post("/brands", (req, res) => {
+        if (!reg.body.Brand || !reg.body.origin) {
+            return res.status(400).send({error: "One or all parameter are missing"})
+        }
+       const createdBrand =  brands.create({
+            Brand:req.body.Brand,
+            origin:req.body.origin
         })
+        res.status(201)
+        .location(`${getBaseurl(req)}/brands/${createdBrand.id}`)
+        .send/createdBrand
+    })
+    function getBaseurl(request){
+        return (request.conncetion && request.conncetion.encrypted ? "https": "http")
+         + "://" +request.headers.host
     }
-})
-app.get("/prices", (res,req) => {
-    res.send(prices.getAll())
-})
-
-app.get("/prices", (res,req) => {
-    const foundThing = prices.getById(req.params.id)
-    if (foundThing === undefined) {
-        res.status(404).send({
-            error:"price not found"
-        })
-    }
-})
-
 
 app.listen(port, () => {
     console.log(`API up at: http://localhost:${port}`);
