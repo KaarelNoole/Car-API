@@ -34,27 +34,7 @@ app.get("/Locations/:id",(req,res)=>{
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 res.send(locations)
 
-app.post("/Sellers", (req,res) => {
-    if (!req.body.seller || !req.body.origin) {
-        return res.status(404).send ({Error:"one or more parameters are missing"})
-    }
-    const createdSeller = sellers.create({
-        seller:req.body.seller,
-        Name:req.body.Name,
-        Email:req.body.Email,
-        Phone:req.body.Phone
-    })
-    res.status(201)
-    .location(`${getBaseur1(req)}/Sellers/${createdSeller.id}`)
-})
-
-//Delete
-app.delete("/sellers/:id",(req,res) => {
-    if(sellers.delete(req.params.id)==="undefined") {
-        return res.status(404).send({error: "Seller not found"})
-    }
-    res-status(204).send()
-})
+require("./routes/sellerRoutes")(app)
 
 function getBaseur1(request){
     return(request.connection && request.connection.encrypted ? "https": "http")
