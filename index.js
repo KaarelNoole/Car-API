@@ -48,6 +48,14 @@ app.post("/Sellers", (req,res) => {
     .location(`${getBaseur1(req)}/Sellers/${createdSeller.id}`)
 })
 
+//Delete
+app.delete("/sellers/:id",(req,res) => {
+    if(sellers.delete(req.params.id)==="undefined") {
+        return res.status(404).send({error: "Seller not found"})
+    }
+    res-status(204).send()
+})
+
 function getBaseur1(request){
     return(request.connection && request.connection.encrypted ? "https": "http")
     + "://" +request.header.host
