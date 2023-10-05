@@ -11,3 +11,11 @@ exports.getAll = () => {
 exports.getById = (id) => {
     return data.find((thing) => thing.id == parseInt(id))
 }
+
+exports.create = (newModel) => {
+    const newId = Math.max(...data.map((thing) => thing.id)) + 1
+    newModel.id = newId
+    data.push(newModel)
+    return newModel
+
+}

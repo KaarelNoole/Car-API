@@ -1,7 +1,7 @@
 let data  = [
-    {id: 1, Amount: '3000',  currency: '$'},
-    {id: 2, Brand: '5000', origin: '£'},
-    {id: 3, Brand: '4000',  origin: '$'}
+    {id: 1, amount: '3000',  currency: '$'},
+    {id: 2, amount: '5000', currency: '£'},
+    {id: 3, amount: '4000',  currency: '$'}
     ]
 
 exports.getAll = () => {
