@@ -1,0 +1,31 @@
+const sellers = require("../sellers/data")
+const {getBaseur1} = require("./helpers.js")
+//Create
+exports.createNew = (req,res) => {
+    if (!req.body.seller || !req.body.origin) {
+        return res.status(404).send ({Error:"one or more parameters are missing"})
+    }
+    const createdSeller = sellers.create({
+        seller:req.body.seller,
+        Name:req.body.Name,
+        Email:req.body.Email,
+        Phone:req.body.Phone
+    })
+    res.status(201)
+    .location(`${getBaseur1(req)}/Sellers/${createdSeller.id}`)
+}
+
+//Read
+app.post("/sellers",(req,res) => {
+})
+app.post("/sellers/:id",(req,res) => {
+})
+//Update
+
+//Delete
+app.delete("/sellers/:id",(req,res) => {
+    if(sellers.delete(req.params.id)==="undefined") {
+        return res.status(404).send({error: "Seller not found"})
+    }
+    res-status(204).send()
+})
