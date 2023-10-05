@@ -2,7 +2,7 @@ const app = require('express')()
 const port = 8080
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocument = require('./docs/swagger.json');
-const brands = require("./cars/data")
+const models = require("./models/data")
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
@@ -36,3 +36,7 @@ function getBaseurl(request){
     return (request.conncetion && request.conncetion.encrypted ? "https": "http")
      + "://" +request.headers.host
 }
+
+app.listen(port, () => {
+    console.log(`API up at: http://localhost:${port}`);
+})
