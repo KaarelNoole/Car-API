@@ -22,7 +22,7 @@ app.get("/models", (req,res) => {
         })
     }
 })
-})
+
 
 
 app.listen(port, () => {
