@@ -1,4 +1,4 @@
-const sellersController = require("../controllers/sellersController.js")
+const sellersController = require("../controllers/sellersController")
 module.exports = (app) => {
     app.route("/sellers")
         .get(sellersController.getAll)

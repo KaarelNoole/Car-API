@@ -1,29 +1,29 @@
 const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE,process.env.DB_USER,process.env.DPASS,{
-    host: process.env.HO ,
-    dialect: "mariadb",
-    define: {
-        timestamps: true
-    },
-    logging: true
+const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USER, process.env.DB_PASS, {
+  host: process.env.DB_HOST,
+  dialect: "mariadb",
+  define: {
+    timestamps: true
+  },
+  logging: console.log
 })
 
 try {
-     sequelize.authenticate().then(() => {
+  sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
-    });
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+  });
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 const db = {}
 db.Sequelize = Sequelize
 db.connection = sequelize
-db.sellers = require("./Model/Seller")(sequelize,Sequelize)
+db.sellers = require("./Model/Seller")(sequelize, Sequelize)
 
-sync = async () =>{
-    await sequelize.sync({force:true})
-    await sequelize.sync({alter:true})
+sync = async () => {
+  await sequelize.sync({ force: true })
+  //await sequelize.sync({alter:true})
 
 }
 
-module.exports = {db,sync}
+module.exports = { db, sync }

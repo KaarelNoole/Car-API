@@ -1,9 +1,9 @@
 const { Sequelize } = require("sequelize")
 
 module.exports = (dbConnection, Sequelize) => {
-    const Seller = dbConnection.def.define("Seller",{
+    const Seller = dbConnection.define("Seller",{
         id: {
-            type: Sequelize.INTERGER,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
