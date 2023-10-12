@@ -21,16 +21,10 @@
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^3.0.1",
-<<<<<<< HEAD
     "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0"
   },
   "nodemonConfig": {
-=======
-    "swagger-ui-express": "^5.0.0"
-  },
-  "nodemonConfig":{
->>>>>>> 5f00ae0467775a97839e5a1ded9c4d3f202bda8e
     "ext": "js,json,html,yaml"
   }
 }
