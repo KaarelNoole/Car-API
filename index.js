@@ -7,6 +7,7 @@ const yamljs = require('yamljs')
 const swaggerDocument = yamljs.load('./docs/swagger.yaml');
 const brands = require("./brands/data")
 const { Sequelize } = require('sequelize');
+const { error, log } = require("console")
 const sequelize = new Sequelize(process.env.DATABASE,process.env.DB_USER,process.env.DPASS,{
     host: process.env.HO ,
     dialect: "mariadb"
@@ -40,5 +41,8 @@ app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 
 app.listen(port, () => {
+    require("./db").sync()
+        .then(console.log("Syncronized"))
+        .catch((error) => console.log("Error:", error));
     console.log(`API up at: http://localhost:${port}`);
 })
