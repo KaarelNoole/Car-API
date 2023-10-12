@@ -1,31 +1,40 @@
-const sellers = require("../sellers/data")
-const {getBaseur1} = require("./helpers.js")
-//Create
-exports.createNew = (req,res) => {
-    if (!req.body.seller || !req.body.origin) {
-        return res.status(404).send ({Error:"one or more parameters are missing"})
+const Seller = require("../Model/Seller")
+const { db } = require("../db")
+const Sellers = db.games
+const { getBaseurl } = require("./sellers")
+
+// CREATE
+exports.createNew = async (req, res) => {
+    if (!req.body.name || !req.body.price) {
+        return res.status(400).send({ error: "One or all required parameters are missing" })
     }
-    const createdSeller = sellers.create({
-        seller:req.body.seller,
-        Name:req.body.Name,
-        Email:req.body.Email,
-        Phone:req.body.Phone
+    const createdSeller = await games.create(req.body, {
+        fields: ["id","name", "email","phone"]
     })
     res.status(201)
-    .location(`${getBaseur1(req)}/Sellers/${createdSeller.id}`)
+        .location(`${getBaseurl(req)}/games/${createdSeller.id}`)
+        .json(createdSeller)
 }
-
-//Read
-app.post("/sellers",(req,res) => {
-})
-app.post("/sellers/:id",(req,res) => {
-})
-//Update
-
-//Delete
-app.delete("/sellers/:id",(req,res) => {
-    if(sellers.delete(req.params.id)==="undefined") {
-        return res.status(404).send({error: "Seller not found"})
+// READ
+exports.getAll = async (req, res) => {
+    const result = await Seller.findAll({ attributes: ["id","name", "email","phone"] })
+    res.send(JSON.stringify(result))
+}
+exports.getById = (req, res) => {
+    const foundSeller = Seller.getById(req.params.id)
+    if (foundSeller === undefined) {
+        return res.status(404).send({ error: `Seller not found` })
     }
-    res-status(204).send()
-})
+    res.send(foundSeller)
+}
+// UPDATE
+exports.editById = (req, res) => {
+
+}
+// DELETE
+exports.deleteById = (req, res) => {
+    if (Sellers.delete(req.params.id) === undefined) {
+        return res.status(404).send({ error: "Seller not found" })
+    }
+    res.status(204).send()
+}

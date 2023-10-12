@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize")
 
-module.exports = (this.dbConnection, Sequelize) => {
+module.exports = (dbConnection, Sequelize) => {
     const Seller = dbConnection.def.define("Seller",{
         id: {
             type: Sequelize.INTERGER,
@@ -15,5 +15,5 @@ module.exports = (this.dbConnection, Sequelize) => {
             type: Sequelize.STRING,
             allownull: false
         }
-    });
-}
+    })
+};
