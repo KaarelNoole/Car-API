@@ -20,16 +20,16 @@ try {
 const db = {}
 db.Sequelize = Sequelize
 db.connection = sequelize
-db.cars = require("../Model/cars")(sequelize,Sequelize)
-db.sellers = require("../Model/Sellers")(sequelize,Sequelize)
-db.Cars = require("../Model/CarsSeller")(sequelize,Sequelize, db.cars, db.sellers)
+db.cars = require("./Model/cars")(sequelize,Sequelize)
+db.seller = require("./Model/Seller")(sequelize,Sequelize)
+db.CarsSellers = require("./Model/CarsSeller")(sequelize,Sequelize, db.cars, db.seller)
 
-db.cars.belongsToMany(db.sellers, {through: db.CarsSeller})
-db.sellers.belongsToMany(db.cars, {through: db.CarsSeller})
-db.Cars.hasMany(db.CarsSeller)
-db.sellers.hasMany(db.CarsSeller)
-db.CarsSeller.belongsTo(db.Cars)
-db.CarsSeller.belongsTo(db.sellers)
+db.cars.belongsToMany(db.seller, {through: db.CarsSellers})
+db.seller.belongsToMany(db.cars, {through: db.CarsSellers})
+db.cars.hasMany(db.CarsSellers)
+db.seller.hasMany(db.CarsSellers)
+db.CarsSellers.belongsTo(db.cars)
+db.CarsSellers.belongsTo(db.seller)
 
 sync = async ()=>{
     //await sequelize.sync({ force: true }) // Erase all and recreate

@@ -1,4 +1,3 @@
-
 const { db } = require("../db")
 const Sellers = db.sellers
 const { getBaseurl } = require("./helpers")
@@ -9,10 +8,10 @@ exports.createNew = async (req, res) => {
         return res.status(400).send({ error: "One or all required parameters are missing" })
     }
     const createdSeller = await Sellers.create(req.body, {
-        fields: ["id","name", "email","phone"]
+        fields: ["name", "email","phone"]
     })
     res.status(201)
-        .location(`${getBaseurl(req)}/games/${createdSeller.id}`)
+        .location(`${getBaseurl(req)}/sellers/${createdSeller.id}`)
         .json(createdSeller)
 }
 // READ
@@ -28,13 +27,25 @@ exports.getById = (req, res) => {
     res.send(foundSeller)
 }
 // UPDATE
-exports.editById = (req, res) => {
-
+exports.editById = async (req, res) => {
+    const updatedResult = await Sellers.update({ ...req.body}, {
+        where: {id: req.params.id },
+        fields: ["name", "email", "phone"]
+    })
+    if (updatedResult[0] == 0) {
+        return res.status(404).send({error: "Seller not found"})
+    }
+    res.status(204)
+        .location(`${getBaseurl(req)}/sellers/${req.params.id}`)
+        .send()
 }
 // DELETE
-exports.deleteById = (req, res) => {
-    if (Sellers.delete(req.params.id) === undefined) {
-        return res.status(404).send({ error: "Seller not found" })
+exports.deleteById = async (req, res) => {
+    const deleteAmount = await Sellers.destroy({
+        where: { id: req.params.id }
+    })
+    if (deleteAmount === 0) {
+        return res.status(404).send({error: "Seller not found"})
     }
     res.status(204).send()
 }

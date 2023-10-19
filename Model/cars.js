@@ -13,7 +13,7 @@ module.exports = (dbConnection, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         },
-        Year: {
+       year: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
