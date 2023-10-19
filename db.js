@@ -19,6 +19,10 @@ const db = {}
 db.Sequelize = Sequelize
 db.connection = sequelize
 db.sellers = require("./Model/Seller")(sequelize, Sequelize)
+db.sellers = require("./Model/Seller")
+
+
+
 
 sync = async () => {
   await sequelize.sync({ force: true })

@@ -1,231 +1,1231 @@
 {
-  "openapi": "3.0.2",
-  "info": {
-      "title": "Cars-API",
-      "version": "1.0.0",
-      "description": "### This is a Swagger UI for our Car API"
-  },
-  "paths": {
-      "/locations": {
-          "get": {
-              "tags": [
-                  "Locations"
-              ],
-              "responses": {
-                  "200": {
-                      "content": {
-                          "application/json": {
-                              "schema": {
-                                  "type": "array",
-                                  "items": {
-                                      "type": "string"
-                                  }
-                              },
-                              "examples": {
-                                  "List of locations": {
-                                      "value": [
-                                          {
-                                              "LocationID": "1",
-                                              "City": "Tallinn",
-                                              "Country": "Estonia"
-                                          },
-                                          {
-                                              "LocationID": "2",
-                                              "City": "Berlin",
-                                              "Country": "Germany"
-                                          },
-                                          {
-                                              "LocationID": "3",
-                                              "City": "Moscow",
-                                              "Country": "Russia"
-                                          }
-                                      ]
-                                  }
-                              }
-                          }
-                      },
-                      "description": "Returns a list of al locations"
-                  }
-              },
-              "summary": "List of Locations",
-              "description": "Returns a list of all locations\n"
-          }
-      },
-      "/sellers": {
-          "get": {
-              "tags": [
-                  "Sellers"
-              ],
-              "responses": {
-                  "200": {
-                      "content": {
-                          "application/json": {
-                              "schema": {
-                                  "type": "array",
-                                  "items": {
-                                      "type": "string"
-                                  }
-                              },
-                              "examples": {
-                                  "List of sellers": {
-                                      "value": [
-                                          {
-                                              "SellerID": "1",
-                                              "Name": "Martin",
-                                              "Email": "martinhobesalu@gmail.com",
-                                              "Phone": "98347561"
-                                          },
-                                          {
-                                              "SellerID": "2",
-                                              "Name": "Kaarel",
-                                              "Email": "kaarelnoole@gmail.com",
-                                              "Phone": "63276615"
-                                          }
-                                      ]
-                                  }
-                              }
-                          }
-                      },
-                      "description": "Returns a list of sellers"
-                  }
-              },
-              "summary": "Get a List of sellers",
-              "description": "Returns a list of sellers\n"
-          }
-      },
-      "/prices": {
-          "get": {
-              "tags": [
-                  "prices"
-              ],
-              "responses": {
-                  "200": {
-                      "content": {
-                          "application/json": {
-                              "schema": {
-                                  "type": "array",
-                                  "items": {
-                                      "type": "string"
-                                  }
-                              },
-                              "examples": {
-                                  "List of Prices": {
-                                      "value": [
-                                          {
-                                              "PriceID": "1",
-                                              "Amount": "3000",
-                                              "Currency": "$"
-                                          },
-                                          {
-                                              "BrandID": "2",
-                                              "Amount": "5000",
-                                              "Currency": "£"
-                                          },
-                                          {
-                                              "PriceID": "3",
-                                              "Amount": "4000",
-                                              "Currency": "€"
-                                          }
-                                      ]
-                                  }
-                              }
-                          }
-                      },
-                      "description": "Returns a list of prices"
-                  }
-              },
-              "summary": "Get a list of all prices",
-              "description": "Returns a list of all prices in API"
-          }
-      },
-      "/models": {
-          "get": {
-              "tags": [
-                  "models"
-              ],
-              "responses": {
-                  "200": {
-                      "content": {
-                          "application/json": {
-                              "schema": {
-                                  "type": "array",
-                                  "items": {}
-                              },
-                              "examples": {
-                                  "List of car models": {
-                                      "value": [
-                                          {
-                                              "ModelID": "1",
-                                              "Name": "Ford focus",
-                                              "Color": "Grey",
-                                              "BrandID": "1"
-                                          },
-                                          {
-                                              "ModelID": "2",
-                                              "Name": "Model S",
-                                              "Color": "Black",
-                                              "BrandID": "2"
-                                          },
-                                          {
-                                              "ModelID": "3",
-                                              "Name": "Yaris",
-                                              "Color": "Red",
-                                              "BrandID": "3"
-                                          }
-                                      ]
-                                  }
-                              }
-                          }
-                      },
-                      "description": "Returns a list of car models"
-                  }
-              },
-              "summary": "Get a list of all car models",
-              "description": "Returns a list of all car models in API\n"
-          }
-      },
-      "/brands": {
-          "get": {
-              "tags": [
-                  "brand"
-              ],
-              "responses": {
-                  "200": {
-                      "content": {
-                          "application/json": {
-                              "schema": {
-                                  "type": "array",
-                                  "items": {}
-                              },
-                              "examples": {
-                                  "List of car brands": {
-                                      "value": [
-                                          {
-                                              "BrandID": "1",
-                                              "Name": "Ford",
-                                              "Origin": "Germany"
-                                          },
-                                          {
-                                              "BrandID": "2",
-                                              "Name": "Tesla",
-                                              "Origin": "USA"
-                                          },
-                                          {
-                                              "BrandID": "3",
-                                              "Name": "Toyota",
-                                              "Origin": "Japan"
-                                          }
-                                      ]
-                                  }
-                              }
-                          }
-                      },
-                      "description": "Returns a list of car brands\n"
-                  }
-              },
-              "summary": "Get a list of all car brands",
-              "description": "Returns a list of all car brands in API"
-          }
-      }
-  }
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Cars-API",
+        "version": "1.0.0",
+        "description": "### This is a Swagger UI for our Car API"
+    },
+    "paths": {
+        "/locations": {
+            "get": {
+                "tags": [
+                    "locations"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of locations": {
+                                        "value": [
+                                            {
+                                                "LocationID": "1",
+                                                "City": "Tallinn",
+                                                "Country": "Estonia"
+                                            },
+                                            {
+                                                "LocationID": "2",
+                                                "City": "Berlin",
+                                                "Country": "Germany"
+                                            },
+                                            {
+                                                "LocationID": "2",
+                                                "City": "Moscow",
+                                                "Country": "Russia"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of locations"
+                    }
+                },
+                "summary": "List of Locations",
+                "description": "Returns a list of all locations\n"
+            },
+            "post": {
+                "tags": [
+                    "locations"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-location"
+                                }
+                            }
+                        },
+                        "description": "Created new location"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "Missing params": {
+                                        "value": "{City:'Tallinn', Country:'Estonia' }"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "One or all params are missing"
+                    }
+                },
+                "summary": "Creates a location",
+                "description": "Creates a new location"
+            }
+        },
+        "/sellers": {
+            "get": {
+                "tags": [
+                    "sellers"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of sellers": {
+                                        "value": [
+                                            {
+                                                "SellerID": "1",
+                                                "Name": "Martin",
+                                                "Email": "martinhobesalu@gmail.com",
+                                                "Phone": "98347561"
+                                            },
+                                            {
+                                                "SellerID": "2",
+                                                "Name": "Kaarel",
+                                                "Email": "kaarelnoole@gmail.com",
+                                                "Phone": "63276615"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of sellers"
+                    }
+                },
+                "summary": "Get a List of sellers",
+                "description": "Returns a list of sellers\n"
+            },
+            "post": {
+                "tags": [
+                    "sellers"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-seller"
+                                }
+                            }
+                        },
+                        "description": "Created new seller"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "Missing params": {
+                                        "value": "{Name: 'Martin',  Email: 'martinhobesalu@gmail.com', Phone: '98347561'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "One or all params are missing"
+                    }
+                },
+                "summary": "Creates a  seller",
+                "description": "Creates a new seller"
+            }
+        },
+        "/prices": {
+            "get": {
+                "tags": [
+                    "prices"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of Prices": {
+                                        "value": [
+                                            {
+                                                "PriceID": "1",
+                                                "Amount": "3000",
+                                                "Currency": "€"
+                                            },
+                                            {
+                                                "BrandID": "2",
+                                                "Amount": "5000",
+                                                "Currency": "£"
+                                            },
+                                            {
+                                                "PriceID": "3",
+                                                "Amount": "4000",
+                                                "Currency": "€"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of prices"
+                    }
+                },
+                "summary": "Get a list of all prices",
+                "description": "Returns a list of all prices in API"
+            },
+            "post": {
+                "tags": [
+                    "prices"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-price"
+                                }
+                            }
+                        },
+                        "description": "Created new price"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-price"
+                                },
+                                "examples": {
+                                    "Missing params": {
+                                        "value": "{id: 1, Amount: '3000',  currency: '€'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "One or all params are missing"
+                    }
+                },
+                "summary": "Creates a new price",
+                "description": "Creates a new model"
+            }
+        },
+        "/models": {
+            "get": {
+                "tags": [
+                    "models"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "examples": {
+                                    "List of car models": {
+                                        "value": [
+                                            {
+                                                "ModelID": "1",
+                                                "Name": "Ford focus",
+                                                "Color": "Grey",
+                                                "BrandID": "1"
+                                            },
+                                            {
+                                                "ModelID": "2",
+                                                "Name": "Model S",
+                                                "Color": "Black",
+                                                "BrandID": "2"
+                                            },
+                                            {
+                                                "ModelID": "3",
+                                                "Name": "Yaris",
+                                                "Color": "Red",
+                                                "BrandID": "3"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of car models"
+                    }
+                },
+                "summary": "Get a list of all car models",
+                "description": "Returns a list of all car models in API\n"
+            },
+            "post": {
+                "tags": [
+                    "models"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-model"
+                                }
+                            }
+                        },
+                        "description": "Created new model"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "Missing params": {
+                                        "value": " {name: 'Ford focus',  color: 'grey'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "One or all params are missing"
+                    }
+                },
+                "summary": "Creates a  model",
+                "description": "Creates a new model"
+            }
+        },
+        "/brands": {
+            "get": {
+                "tags": [
+                    "brands"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "examples": {
+                                    "List of car brands": {
+                                        "value": [
+                                            {
+                                                "BrandID": "1",
+                                                "Name": "Ford",
+                                                "Origin": "Germany"
+                                            },
+                                            {
+                                                "BrandID": "2",
+                                                "Name": "Tesla",
+                                                "Origin": "USA"
+                                            },
+                                            {
+                                                "BrandID": "3",
+                                                "Name": "Toyota",
+                                                "Origin": "Japan"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of car brands\n"
+                    }
+                },
+                "summary": "Get a list of all car brands",
+                "description": "Returns a list of all car brands in API"
+            },
+            "post": {
+                "requestBody": {
+                    "description": "A new brand to be created",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/error"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "brands"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/new-brand"
+                                }
+                            }
+                        },
+                        "description": "Created new brand"
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "Missing params": {
+                                        "value": "{brand: 'Ford',  origin: 'Germany'},"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "One or all params are missing"
+                    }
+                },
+                "summary": "Creates a brand",
+                "description": "Creates a new brand\n"
+            }
+        },
+        "/brands/{id}": {
+            "get": {
+                "tags": [
+                    "brands"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "Full details of a given brand": {
+                                        "value": "{id: 2, Brand: 'Tesla', origin: 'USA'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns full details of a given id brand\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": {
+                                            "error": "brand not found"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Brand was not found in brand array"
+                    }
+                },
+                "deprecated": false,
+                "operationId": "id",
+                "summary": "Get full details of a brand",
+                "description": "Returns full details of a given id brand\n"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "New Brand": {
+                                    "value": "{id: 4, brand: 'BMW', origin: 'Germany'}"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "brands"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"brand not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Brand not found"
+                    }
+                },
+                "summary": "Add full details of a brand",
+                "description": "Adds full detail of a given brand id.\n\n"
+            },
+            "delete": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/brands"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "brands"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Succeeded"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"brand not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Brand not found"
+                    }
+                },
+                "summary": "Deletes brand",
+                "description": "Deletes brand with given id"
+            }
+        },
+        "/locations/{id}": {
+            "get": {
+                "tags": [
+                    "locations"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Full details of a given location": {
+                                        "value": "{id: 2, City:'Berlin', Country:'Germany'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns full details of a given id location\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"location not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Location was not found in location array"
+                    }
+                },
+                "summary": "Get full details of a location",
+                "description": "Returns full details of a given id location"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "New Location": {
+                                    "value": " {id: 4, City:'Tokyo', Country:'Japan' }"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "locations"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"location not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "location not found"
+                    }
+                },
+                "summary": "Add full details of a brand",
+                "description": "Adds full details of a given location id"
+            },
+            "delete": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/locations"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "locations"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Succeeded\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"location not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "location not found"
+                    }
+                },
+                "summary": "Deletes location",
+                "description": "Deletes location with given id"
+            }
+        },
+        "/models/{id}": {
+            "get": {
+                "tags": [
+                    "models"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "Full details of a given model": {
+                                        "value": "{id: 1, name: 'Ford focus',  color: 'grey'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns full details of a given id model\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"model not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Model was not found in model array"
+                    }
+                },
+                "summary": "Get full details of a model",
+                "description": "Returns full details of a given id model"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "New Model": {
+                                    "value": "{id: 4, name: 'I',  color: 'Grey'"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "models"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"model not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "model not found"
+                    }
+                },
+                "summary": "Add full details of a model",
+                "description": "Adds full details of a given models id"
+            },
+            "delete": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Delete-model"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "models"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Succeeded"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"model not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "model not found"
+                    }
+                },
+                "summary": "Deletes models",
+                "description": "Deletes model with given id"
+            }
+        },
+        "/prices/{id}": {
+            "get": {
+                "tags": [
+                    "prices"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "Full details of a given price": {
+                                        "value": "{id: 1, Amount: '3000',  currency: '€'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns full details of a given id price\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"price not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Price was not found in price array"
+                    }
+                },
+                "summary": "Get full details of a price",
+                "description": "Returns full details of a given id price"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "New price": {
+                                    "value": "{id: 4, Brand: '10000',  origin: '₱'}\r\n"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "prices"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"price not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "price not found"
+                    }
+                },
+                "summary": "Add full details of price",
+                "description": "Adds full details of a given price id"
+            },
+            "delete": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Delete-price"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "prices"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Succeeded"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"price not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "price not found"
+                    }
+                },
+                "summary": "Deletes price",
+                "description": "Deletes price with given id"
+            }
+        },
+        "/sellers/{id}": {
+            "get": {
+                "tags": [
+                    "sellers"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "Full details of a given seller": {
+                                        "value": "{id: 1, Name: 'Kaarel',  Email: 'kaarelnoole@gmail.com', Phone: '32708712'}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns full details of a given id seller\n"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"seller not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Seller was not found in seller array"
+                    }
+                },
+                "summary": "Get full details of a seller",
+                "description": "Returns full details of a given id seller"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "New Seller": {
+                                    "value": "{id: 3, Name: 'Rasmus',  Email: 'Rasmus@gmail.com', Phone: '7592148'}"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "sellers"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"seller not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "seller not found"
+                    }
+                },
+                "summary": "Add full details of a seller",
+                "description": "Adds full details of a given sellers id"
+            },
+            "delete": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Delete-seller"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "sellers"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Succeeded"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                },
+                                "examples": {
+                                    "error": {
+                                        "value": "\t{\"error\":\"seller not found\"}"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "seller not found"
+                    }
+                },
+                "summary": "Deletes seller",
+                "description": "Deletes seller with given id"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "error": {
+                "title": "Root Type for error",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "error": "Error message"
+                }
+            },
+            "new-location": {
+                "description": "{City:'Tallinn', Country:'Estonia' }",
+                "required": [
+                    "city",
+                    "country"
+                ],
+                "type": "object",
+                "properties": {
+                    "city": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "new-price": {
+                "description": "{Amount: '3000',  currency: '€'}",
+                "required": [
+                    "Amount",
+                    "currency"
+                ],
+                "type": "object",
+                "properties": {
+                    "Amount": {
+                        "format": "float",
+                        "description": "",
+                        "type": "number"
+                    },
+                    "currency": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "new-seller": {
+                "description": "{Name: 'Martin',  Email: 'martinhobesalu@gmail.com', Phone: '98347561'}",
+                "required": [
+                    "name",
+                    "email",
+                    "phone"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "new-model": {
+                "description": " {name: 'Ford focus',  color: 'grey'}",
+                "required": [
+                    "name",
+                    "color"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "color": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "new-brand": {
+                "description": "{'brand: 'Ford',  origin: 'Germany'}",
+                "required": [
+                    "Brand",
+                    "origin"
+                ],
+                "type": "object",
+                "properties": {
+                    "Brand": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Delete-model": {
+                "description": "",
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1
+                }
+            },
+            "Delete-price": {
+                "description": "",
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1
+                }
+            },
+            "Delete-seller": {
+                "description": "",
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1
+                }
+            },
+            "brands": {
+                "description": "",
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1
+                }
+            },
+            "locations": {
+                "description": "",
+                "required": [
+                    "id"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1
+                }
+            }
+        }
+    }
 }
