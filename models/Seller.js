@@ -16,4 +16,5 @@ module.exports = (dbConnection, Sequelize) => {
             allownull: false
         }
     })
+    return Seller
 };

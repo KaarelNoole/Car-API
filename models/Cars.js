@@ -1,7 +1,7 @@
-module.exports = (dbConnection, Sequelize)=>{
-    const Car = dbConnection.define("cars",{
+module.exports = (dbConnection, Sequelize) => {
+    const Car = dbConnection.define("Car", {
         id: {
-            type:Sequelize.INTEGER,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
@@ -9,11 +9,11 @@ module.exports = (dbConnection, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         },
-        model:{
+        modeId: {
             type: Sequelize.STRING,
             allowNull: false
         },
-       year: {
+        year: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
@@ -21,6 +21,6 @@ module.exports = (dbConnection, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         }
-})
+    })
     return Car
 }

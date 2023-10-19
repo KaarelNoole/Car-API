@@ -1,7 +1,7 @@
-module.exports = (dbConnection, Sequelize,Car, Seller)=>{
+module.exports = (dbConnection, Sequelize, Car, Seller) => {
     const CarsSeller = dbConnection.define("CarsSeller", {
         id: {
-            type:Sequelize.INTEGER,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },

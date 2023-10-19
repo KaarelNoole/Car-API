@@ -1,5 +1,5 @@
 const { db } = require("../db")
-const Sellers = db.sellers
+const sellers = db.sellers
 const { getBaseurl } = require("./helpers")
 
 // CREATE
@@ -7,7 +7,7 @@ exports.createNew = async (req, res) => {
     if (!req.body.name || !req.body.price) {
         return res.status(400).send({ error: "One or all required parameters are missing" })
     }
-    const createdSeller = await Sellers.create(req.body, {
+    const createdSeller = await sellers.create(req.body, {
         fields: ["name", "email","phone"]
     })
     res.status(201)
@@ -16,11 +16,11 @@ exports.createNew = async (req, res) => {
 }
 // READ
 exports.getAll = async (req, res) => {
-    const result = await Sellers.findAll({ attributes: ["id","name", "email","phone"] })
+    const result = await sellers.findAll({ attributes: ["id","name", "email","phone"] })
     res.json(result)
 }
 exports.getById = (req, res) => {
-    const foundSeller = Sellers.getById(req.params.id)
+    const foundSeller = sellers.getById(req.params.id)
     if (foundSeller === undefined) {
         return res.status(404).send({ error: `Seller not found` })
     }
@@ -28,7 +28,7 @@ exports.getById = (req, res) => {
 }
 // UPDATE
 exports.editById = async (req, res) => {
-    const updatedResult = await Sellers.update({ ...req.body}, {
+    const updatedResult = await sellers.update({ ...req.body}, {
         where: {id: req.params.id },
         fields: ["name", "email", "phone"]
     })
@@ -41,7 +41,7 @@ exports.editById = async (req, res) => {
 }
 // DELETE
 exports.deleteById = async (req, res) => {
-    const deleteAmount = await Sellers.destroy({
+    const deleteAmount = await sellers.destroy({
         where: { id: req.params.id }
     })
     if (deleteAmount === 0) {

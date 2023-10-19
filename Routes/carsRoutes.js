@@ -1,4 +1,4 @@
-const CarsController = require("../controllers/Carscontroller")
+const Carscontroller = require("../controllers/Carscontroller")
 module.exports = (app) => {
     app.route("/Cars")
         .get(Carscontroller.getAll)
