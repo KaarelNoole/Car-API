@@ -20,11 +20,20 @@ try {
 const db = {}
 db.Sequelize = Sequelize
 db.connection = sequelize
-db.brands = require("./Model/Brand")(sequelize,Sequelize)
+db.cars = require("../Model/cars")(sequelize,Sequelize)
+db.sellers = require("../Model/Sellers")(sequelize,Sequelize)
+db.Cars = require("../Model/CarsSeller")(sequelize,Sequelize, db.cars, db.sellers)
+
+db.cars.belongsToMany(db.sellers, {through: db.CarsSeller})
+db.sellers.belongsToMany(db.cars, {through: db.CarsSeller})
+db.Cars.hasMany(db.CarsSeller)
+db.sellers.hasMany(db.CarsSeller)
+db.CarsSeller.belongsTo(db.Cars)
+db.CarsSeller.belongsTo(db.sellers)
 
 sync = async ()=>{
-    await sequelize.sync({force:true}) // Erase all and recreate
-    //await sequelize.sync({alter:true}) // alter existing to match the recreate
+    //await sequelize.sync({ force: true }) // Erase all and recreate
+    await sequelize.sync({ alter: true }) // Alter existing to match the model
 }
 
 module.exports = {db, sync }

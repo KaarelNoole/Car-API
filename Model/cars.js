@@ -1,5 +1,5 @@
 module.exports = (dbConnection, Sequelize)=>{
-    const Brand = dbConnection.define("Brand",{
+    const Car = dbConnection.define("cars",{
         id: {
             type:Sequelize.INTEGER,
             primaryKey: true,
@@ -9,10 +9,18 @@ module.exports = (dbConnection, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         },
+        model:{
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        Year: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         origin: {
             type: Sequelize.STRING,
             allowNull: false
         }
 })
-    return Brand
+    return Car
 }
