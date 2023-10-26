@@ -126,15 +126,15 @@ paths:
                                         -
                                             PriceID: '1'
                                             Amount: '3000'
-                                            Currency: €
+                                            Currency: '€'
                                         -
                                             BrandID: '2'
                                             Amount: '5000'
-                                            Currency: £
+                                            Currency: '£'
                                         -
                                             PriceID: '3'
                                             Amount: '4000'
-                                            Currency: €
+                                            Currency: '€'
                     description: Returns a list of prices
             summary: Get a list of all prices
             description: Returns a list of all prices in API
@@ -155,7 +155,7 @@ paths:
                                 $ref: '#/components/schemas/new-price'
                             examples:
                                 Missing params:
-                                    value: '{Amount: ''3000'',  currency: ''$''}'
+                                    value: '{Amount: ''3000'',  currency: ''€''}'
                     description: One or all params are missing
             summary: Creates a new price
             description: Creates a new model
@@ -550,7 +550,7 @@ components:
                     description: ''
                     type: string
         new-price:
-            description: '{Amount: ''3000'',  currency: ''$''}'
+            description: '{Amount: ''3000'',  currency: ''£''}'
             required:
                 - Amount
                 - currency
