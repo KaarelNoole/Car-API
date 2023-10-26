@@ -1,5 +1,5 @@
 const { db } = require("../db")
-const cars = db.cars
+const prices = db.prices
 const { getBaseurl } = require("./helpers.js")
 //Create
 exports.createNew = (req, res) => {

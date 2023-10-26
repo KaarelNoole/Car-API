@@ -19,7 +19,9 @@ try {
 const db = {}
 db.Sequelize = Sequelize
 db.connection = sequelize
-db.cars = require("./models/cars")(sequelize,Sequelize)
+db.prices = require("./models/Price")(sequelize, Sequelize)
+db.locations = require("../models/locations")(sequelize, Sequelize)
+db.cars = require("./models/Cars")(sequelize,Sequelize)
 db.seller = require("./models/Seller")(sequelize,Sequelize)
 db.CarsSellers = require("./models/CarsSeller")(sequelize,Sequelize, db.cars, db.seller)
 

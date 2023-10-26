@@ -1,18 +1,16 @@
 module.exports = (dbConnection, Sequelize) => {
-    const Seller = dbConnection.define("Seller",{
+    const Price = dbConnection.define("Price", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
-            type: Sequelize.STRING,
-            allownull: false
+        amount: {
+            type: Sequelize.DECIMAL
         },
-        Email: {
+        currency: {
             type: Sequelize.STRING,
-            allownull: false
+            allowNull: false
         }
     })
-    return Seller
-};
+}

@@ -20,22 +20,37 @@ paths:
                                 List of locations:
                                     value:
                                         -
-                                            LocationID: '1'
+                                            id: 1
                                             City: Tallinn
                                             Country: Estonia
                                         -
-                                            LocationID: '2'
+                                            id: 2
                                             City: Berlin
                                             Country: Germany
                                         -
-                                            LocationID: '2'
+                                            id: 3
                                             City: Moscow
                                             Country: Russia
-                    description: Returns a list of locations
+                    description: Successful
             summary: List of Locations
             description: |
                 Returns a list of all locations
         post:
+            requestBody:
+                description: A new location to be created
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: string
+                        examples:
+                            CreatedLocation:
+                                value:
+                                    id: 4
+                                    City: Tokyo
+                                    Country: Japan
+                required: true
             tags:
                 - locations
             responses:
@@ -43,8 +58,16 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-location'
-                    description: Created new location
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedLocation:
+                                    value:
+                                        id: 4
+                                        City: Tokyo
+                                        Country: Japan
+                    description: Success
                 '400':
                     content:
                         application/json:
@@ -52,7 +75,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 Missing params:
-                                    value: '{City:''Tallinn'', Country:''Estonia'' }'
+                                    value: "\t{\"error\":\"Location not found\"}"
                     description: One or all params are missing
             summary: Creates a location
             description: Creates a new location
@@ -72,20 +95,36 @@ paths:
                                 List of sellers:
                                     value:
                                         -
-                                            SellerID: '1'
+                                            id: 1
                                             Name: Martin
                                             Email: martinhobesalu@gmail.com
-                                            Phone: '98347561'
+                                            Phone: 98347561
                                         -
-                                            SellerID: '2'
+                                            id: 2
                                             Name: Kaarel
                                             Email: kaarelnoole@gmail.com
-                                            Phone: '63276615'
-                    description: Returns a list of sellers
+                                            Phone: 63276615
+                    description: Successful
             summary: Get a List of sellers
             description: |
                 Returns a list of sellers
         post:
+            requestBody:
+                description: A new seller to be created
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: string
+                        examples:
+                            UpdateSeller:
+                                value:
+                                    id: 3
+                                    Name: Karl
+                                    Email: karlnoole@gmail.com
+                                    Phone: 5278921
+                required: true
             tags:
                 - sellers
             responses:
@@ -93,7 +132,16 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-seller'
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedSeller:
+                                    value:
+                                        id: 3
+                                        Name: Karl
+                                        Email: karlnoole@gmail.com
+                                        Phone: 5278921
                     description: Created new seller
                 '400':
                     content:
@@ -124,21 +172,31 @@ paths:
                                 List of Prices:
                                     value:
                                         -
-                                            PriceID: '1'
-                                            Amount: '3000'
-                                            Currency: '€'
+                                            id: 1
+                                            Amount: 3000
+                                            Currency: "€"
                                         -
-                                            BrandID: '2'
-                                            Amount: '5000'
-                                            Currency: '£'
+                                            id: 2
+                                            Amount: 5000
+                                            Currency: "£"
                                         -
-                                            PriceID: '3'
-                                            Amount: '4000'
-                                            Currency: '€'
+                                            id: 3
+                                            Amount: 4000
+                                            Currency: "€"
                     description: Returns a list of prices
             summary: Get a list of all prices
             description: Returns a list of all prices in API
         post:
+            requestBody:
+                description: A new price to be created
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/new-price'
+                        examples:
+                            NewPrice:
+                                value: "\t{id: 4, amount: '10000', currency: '£'}"
+                required: true
             tags:
                 - prices
             responses:
@@ -146,8 +204,16 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-price'
-                    description: Created new price
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedPrices:
+                                    value:
+                                        id: 4
+                                        amount: 10000
+                                        currency: "£"
+                    description: Success
                 '400':
                     content:
                         application/json:
@@ -155,7 +221,7 @@ paths:
                                 $ref: '#/components/schemas/new-price'
                             examples:
                                 Missing params:
-                                    value: '{Amount: ''3000'',  currency: ''€''}'
+                                    value: '{Amount: ''3000'',  currency: ''£''}'
                     description: One or all params are missing
             summary: Creates a new price
             description: Creates a new model
@@ -163,17 +229,34 @@ paths:
         get:
             tags:
                 - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '200':
                     content:
                         application/json:
                             schema:
-                                type: string
+                                type: array
+                                items:
+                                    type: string
                             examples:
-                                Full details of a given location:
-                                    value: '{id: 2, City:''Berlin'', Country:''Germany''}'
-                    description: |
-                        Returns full details of a given id location
+                                Single location:
+                                    value:
+                                        id: 2
+                                        City: Berlin
+                                        Country: Germany
+                    description: |+
+                        Successful
+
                 '404':
                     content:
                         application/json:
@@ -195,13 +278,29 @@ paths:
                                 type: string
                         examples:
                             New Location:
-                                value: ' {id: 4, City:''Tokyo'', Country:''Japan'' }'
+                                value:
+                                    id: 4
+                                    City: Tokyo
+                                    Country: Japan
                 required: true
             tags:
                 - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: |
+                                4
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
-                    description: Success
+                    description: |
+                        Succeeded
                 '404':
                     content:
                         application/json:
@@ -214,13 +313,19 @@ paths:
             summary: Add full details of a brand
             description: Adds full details of a given location id
         delete:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/locations'
             tags:
                 - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
                     description: |
@@ -240,6 +345,17 @@ paths:
         get:
             tags:
                 - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '200':
                     content:
@@ -250,7 +366,10 @@ paths:
                                     type: string
                             examples:
                                 Full details of a given price:
-                                    value: '{id: 1, Amount: ''3000'',  currency: ''€''}'
+                                    value:
+                                        id: 1
+                                        amount: 3000
+                                        currency: "€"
                     description: |
                         Returns full details of a given id price
                 '404':
@@ -269,18 +388,30 @@ paths:
                 content:
                     application/json:
                         schema:
-                            type: array
-                            items:
-                                type: string
+                            $ref: '#/components/schemas/new-price'
                         examples:
-                            New price:
-                                value: "{id: 4, Brand: '10000',  origin: '₱'}\r\n"
+                            Update price:
+                                value:
+                                    id: 4
+                                    amount: 10000
+                                    origin: "£"
                 required: true
             tags:
                 - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
-                    description: Success
+                    description: Succeeded
                 '404':
                     content:
                         application/json:
@@ -293,13 +424,19 @@ paths:
             summary: Add full details of price
             description: Adds full details of a given price id
         delete:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/Delete-price'
             tags:
                 - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
                     description: Succeeded
@@ -318,6 +455,17 @@ paths:
         get:
             tags:
                 - sellers
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '3'
+                    name: id
+                    description: Identificator for the seller
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '200':
                     content:
@@ -328,9 +476,11 @@ paths:
                                     type: string
                             examples:
                                 Full details of a given seller:
-                                    value: >-
-                                        {id: 1, Name: 'Kaarel',  Email: 'kaarelnoole@gmail.com', Phone:
-                                        '32708712'}
+                                    value:
+                                        id: 1
+                                        Name: Kaarel
+                                        Email: kaarelnoole@gmail.com
+                                        Phone: 32708712
                     description: |
                         Returns full details of a given id seller
                 '404':
@@ -354,13 +504,28 @@ paths:
                                 type: string
                         examples:
                             New Seller:
-                                value: '{id: 3, Name: ''Rasmus'',  Email: ''Rasmus@gmail.com'', Phone: ''7592148''}'
+                                value:
+                                    id: 3
+                                    Name: Karl
+                                    Email: karlnoole@gmail.com
+                                    Phone: 5278921
                 required: true
             tags:
                 - sellers
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '3'
+                    name: id
+                    description: Identificator for the seller
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
-                    description: Success
+                    description: Succeeded
                 '404':
                     content:
                         application/json:
@@ -373,13 +538,19 @@ paths:
             summary: Add full details of a seller
             description: Adds full details of a given sellers id
         delete:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/Delete-seller'
             tags:
                 - sellers
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '3'
+                    name: id
+                    description: Identificator for the seller
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
                     description: Succeeded
@@ -396,9 +567,6 @@ paths:
             description: Deletes seller with given id
     /Cars:
         get:
-            requestBody:
-                description: A new car to be created
-                required: true
             tags:
                 - Cars
             responses:
@@ -411,14 +579,26 @@ paths:
                                     type: string
                             examples:
                                 List of cars:
-                                    value: |-
-                                        [
-                                            {Carid: 1, brand: 'Ford', model: 'Ford focus', year: 2016, origin: 'Germany'},
-                                            {Carid: 2, brand: 'Tesla', model: 'Model S', year: 2016, origin: 'USA'},
-                                            {Carid: 3, brand: 'Toyota', model: 'Yaris', year: 2020, origin: 'Japan'}
-                                        ]
-                    description: |
-                        Returns a list of cars
+                                    value:
+                                        -
+                                            id: 1
+                                            brand: Ford
+                                            model: Ford focus
+                                            year: 2016
+                                            origin: Germany
+                                        -
+                                            id: 2
+                                            brand: Tesla
+                                            model: Model S
+                                            year: 2016
+                                            origin: USA
+                                        -
+                                            id: 3
+                                            brand: Toyota
+                                            model: Yaris
+                                            year: 2020
+                                            origin: Japan
+                    description: "\t\r\n\r\nSuccessful"
             summary: Get a list of all cars
             description: Returns a list of all car brands in API
         post:
@@ -427,7 +607,17 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/error'
+                            type: array
+                            items:
+                                type: string
+                        examples:
+                            UpdateCar:
+                                value:
+                                    id: 4
+                                    brand: Toyota
+                                    model: Model Y
+                                    year: 2022
+                                    origin: China
                 required: true
             tags:
                 - Cars
@@ -436,17 +626,26 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-car'
-                    description: Created new car
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedCar:
+                                    value: >-
+                                        {id: 4, brand: 'Toyota', model: 'Model Y', year: 2022, origin:
+                                        'China'}
+                    description: Success
                 '400':
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/error'
                             examples:
-                                Missing params:
-                                    value: '{id: 3, brand: ''Toyota'', model: ''Yaris'', year: 2020, origin: ''Japan''}'
+                                error:
+                                    value: "\t{\"error\":\"Car not found\"}"
                     description: One or all params are missing
+                '500':
+                    description: 'Internal Server error, Try again later'
             summary: Creates a car
             description: |
                 Creates a new car
@@ -454,6 +653,17 @@ paths:
         get:
             tags:
                 - Cars
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '6'
+                    name: id
+                    description: Identificator for the car
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '200':
                     content:
@@ -463,11 +673,15 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                Full details of a given car id:
-                                    value: '{id: 2, brand: ''Tesla'', model: ''Model S'', year: 2016, origin: ''USA''},'
-                    description: |+
-                        Returns full details of a given car id
-
+                                Single Car:
+                                    value:
+                                        id: 2
+                                        brand: Tesla
+                                        model: Model S
+                                        year: 2016
+                                        origin: USA
+                    description: |
+                        Successful
                 '400':
                     content:
                         application/json:
@@ -477,6 +691,8 @@ paths:
                                 error:
                                     value: "\t{\"error\":\"Car not found\"}"
                     description: Car was not found in car array
+                '500':
+                    description: 'Internal Server error, Try again later'
             summary: Get full details of a car
             description: Returns full details of a given car id
         put:
@@ -487,9 +703,29 @@ paths:
                             type: array
                             items:
                                 type: string
+                        examples:
+                            Update Car:
+                                value:
+                                    id: 6
+                                    brand: Tesla
+                                    model: Cybertruck
+                                    year: '2025'
+                                    origin: USA
                 required: true
             tags:
                 - Cars
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: |
+                                6
+                    name: id
+                    description: Identificator for the car
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
                     description: |
@@ -504,12 +740,25 @@ paths:
                                     value:
                                         error: Car not found
                     description: Car not found
+                '500':
+                    description: 'Internal Server error, Try again later'
             summary: Add full details of a car
             description: |
                 Adds full detail of a given car id.
         delete:
             tags:
                 - Cars
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '6'
+                    name: id
+                    description: Identificator for the car
+                    schema:
+                        type: number
+                    in: path
+                    required: true
             responses:
                 '204':
                     description: Succeeded
@@ -557,7 +806,6 @@ components:
             type: object
             properties:
                 Amount:
-                    format: float
                     description: ''
                     type: number
                 currency:
