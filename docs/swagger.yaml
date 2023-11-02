@@ -132,6 +132,16 @@ paths:
                                         email: karlnoole@gmail.com
                                         phone: '5278921'
                     description: Created new seller
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                error:
+                                    value:
+                                        error: missing one or all parameters
+                    description: One or all params are missing
             summary: Creates a  seller
             description: Creates a new seller
     /prices:
@@ -441,7 +451,7 @@ paths:
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -498,7 +508,7 @@ paths:
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -526,7 +536,7 @@ paths:
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -597,7 +607,7 @@ paths:
                                         year: 2022
                                         origin: China
                     description: Success
-                '404':
+                '400':
                     content:
                         application/json:
                             schema:
@@ -605,8 +615,8 @@ paths:
                             examples:
                                 error:
                                     value:
-                                        error: Car not found
-                    description: Cant add car
+                                        error: missing one or all parameters
+                    description: One or all params are missing
             summary: Creates a car
             description: |
                 Creates a new car
@@ -622,7 +632,7 @@ paths:
                     name: id
                     description: Identificator for the car
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -684,7 +694,7 @@ paths:
                     name: id
                     description: Identificator for the car
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -717,7 +727,7 @@ paths:
                     name: id
                     description: Identificator for the car
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
