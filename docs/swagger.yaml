@@ -162,15 +162,15 @@ paths:
                                         -
                                             id: 1
                                             Amount: 3000
-                                            Currency: "€"
+                                            Currency: €
                                         -
                                             id: 2
                                             Amount: 5000
-                                            Currency: "£"
+                                            Currency: £
                                         -
                                             id: 3
                                             Amount: 4000
-                                            Currency: "€"
+                                            Currency: €
                     description: Returns a list of prices
             summary: Get a list of all prices
             description: Returns a list of all prices in API
@@ -183,7 +183,9 @@ paths:
                             $ref: '#/components/schemas/new-price'
                         examples:
                             NewPrice:
-                                value: "\t{id: 4, amount: '10000', currency: '£'}"
+                                value:
+                                    Amount: 97
+                                    currency: €
                 required: true
             tags:
                 - prices
@@ -200,16 +202,13 @@ paths:
                                     value:
                                         id: 4
                                         amount: 10000
-                                        currency: "£"
+                                        currency: €
                     description: Success
                 '400':
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/new-price'
-                            examples:
-                                Missing params:
-                                    value: '{Amount: ''3000'',  currency: ''£''}'
                     description: One or all params are missing
             summary: Creates a new price
             description: Creates a new model
@@ -349,15 +348,13 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
-                                items:
-                                    type: string
+                                $ref: '#/components/schemas/new-price'
                             examples:
                                 Full details of a given price:
                                     value:
                                         id: 1
                                         amount: 3000
-                                        currency: "€"
+                                        currency: €
                     description: |
                         Returns full details of a given id price
                 '404':
@@ -382,7 +379,7 @@ paths:
                                 value:
                                     id: 4
                                     amount: 10000
-                                    origin: "£"
+                                    origin: £
                 required: true
             tags:
                 - prices
@@ -685,18 +682,6 @@ paths:
                 required: true
             tags:
                 - Cars
-            parameters:
-                -
-                    examples:
-                        small:
-                            value: |
-                                6
-                    name: id
-                    description: Identificator for the car
-                    schema:
-                        type: integer
-                    in: path
-                    required: true
             responses:
                 '204':
                     description: |
@@ -745,6 +730,13 @@ paths:
                     description: Car not found
             summary: Deletes car
             description: Deletes car with given id
+        parameters:
+            -
+                name: id
+                schema:
+                    type: integer
+                in: path
+                required: true
 components:
     schemas:
         error:
