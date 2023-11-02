@@ -7,5 +7,10 @@ The API includes: Car brands, car models, initial registration year, price, sell
 Summary:
 Our Auto Api helps you find the car you want to find and the cars posted by other people.
 
-
+How to start project
+1. Clone the project into your file
+2. Install dotenv using command npm install dotenv
+3. Open the project using code .
+4. Add file name .env and add code in .env you can see in env.example
+5. Add to .env file PORT=8080
 Kaarel Noole , Martin Hõbesalu
