@@ -1,10 +1,10 @@
-const Carscontroller = require("../controllers/Carscontroller")
+const CarsController = require(".../controllers/CarsController")
 module.exports = (app) => {
-    app.route("/Cars")
-        .get(Carscontroller.getAll)
-        .post(Carscontroller.createNew) //Create
-    app.route("/Cars/:id")
-        .get(Carscontroller.getById) //Read
-        .put(Carscontroller.editById) //Update
-        .delete(Carscontroller.deleteById) //Delete
+    app.route("/cars")
+        .get(CarsController.getAll)
+        .post(CarsController.createNew) //Create
+    app.route("/cars/:id")
+        .get(CarsController.getById) //Read
+        .put(CarsController.editById) //Update
+        .delete(CarsController.deleteById) //Delete
 }
