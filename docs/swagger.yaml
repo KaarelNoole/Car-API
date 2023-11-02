@@ -8,6 +8,7 @@ paths:
         get:
             tags:
                 - locations
+                - locations
             responses:
                 '200':
                     content:
@@ -21,16 +22,20 @@ paths:
                                     value:
                                         -
                                             id: 1
+                                            id: 1
                                             City: Tallinn
                                             Country: Estonia
                                         -
+                                            id: 2
                                             id: 2
                                             City: Berlin
                                             Country: Germany
                                         -
                                             id: 3
+                                            id: 3
                                             City: Moscow
                                             Country: Russia
+                    description: Successful
                     description: Successful
             summary: List of Locations
             description: |
@@ -51,13 +56,39 @@ paths:
                                     City: Tokyo
                                     Country: Japan
                 required: true
+            requestBody:
+                description: A new location to be created
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                type: string
+                        examples:
+                            CreatedLocation:
+                                value:
+                                    id: 4
+                                    City: Tokyo
+                                    Country: Japan
+                required: true
             tags:
+                - locations
                 - locations
             responses:
                 '201':
                     content:
                         application/json:
                             schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedLocation:
+                                    value:
+                                        id: 4
+                                        City: Tokyo
+                                        Country: Japan
+                    description: Success
                                 type: array
                                 items:
                                     type: string
@@ -75,6 +106,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 Missing params:
+                                    value: "\t{\"error\":\"Location not found\"}"
                                     value: "\t{\"error\":\"Location not found\"}"
                     description: One or all params are missing
             summary: Creates a location
@@ -153,7 +185,13 @@ paths:
                                             id: 1
                                             Amount: 3000
                                             Currency: "€"
+                                            id: 1
+                                            Amount: 3000
+                                            Currency: "€"
                                         -
+                                            id: 2
+                                            Amount: 5000
+                                            Currency: "£"
                                             id: 2
                                             Amount: 5000
                                             Currency: "£"
@@ -161,10 +199,23 @@ paths:
                                             id: 3
                                             Amount: 4000
                                             Currency: "€"
+                                            id: 3
+                                            Amount: 4000
+                                            Currency: "€"
                     description: Returns a list of prices
             summary: Get a list of all prices
             description: Returns a list of all prices in API
         post:
+            requestBody:
+                description: A new price to be created
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/new-price'
+                        examples:
+                            NewPrice:
+                                value: "\t{id: 4, amount: '10000', currency: '£'}"
+                required: true
             requestBody:
                 description: A new price to be created
                 content:
@@ -192,6 +243,16 @@ paths:
                                         amount: 10000
                                         currency: "£"
                     description: Success
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                CreatedPrices:
+                                    value:
+                                        id: 4
+                                        amount: 10000
+                                        currency: "£"
+                    description: Success
                 '400':
                     content:
                         application/json:
@@ -204,8 +265,21 @@ paths:
             summary: Creates a new price
             description: Creates a new model
     '/locations/{id}':
+    '/locations/{id}':
         get:
             tags:
+                - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
                 - locations
             parameters:
                 -
@@ -228,7 +302,14 @@ paths:
                                     type: string
                             examples:
                                 Single location:
+                                Single location:
                                     value:
+                                        id: 2
+                                        City: Berlin
+                                        Country: Germany
+                    description: |+
+                        Successful
+
                                         id: 2
                                         City: Berlin
                                         Country: Germany
@@ -261,7 +342,30 @@ paths:
                                     City: Tokyo
                                     Country: Japan
                 required: true
+                            type: array
+                            items:
+                                type: string
+                        examples:
+                            New Location:
+                                value:
+                                    id: 4
+                                    City: Tokyo
+                                    Country: Japan
+                required: true
             tags:
+                - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: |
+                                4
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
                 - locations
             parameters:
                 -
@@ -290,8 +394,22 @@ paths:
                     description: location not found
             summary: Add full details of a brand
             description: Adds full details of a given location id
+            summary: Add full details of a brand
+            description: Adds full details of a given location id
         delete:
             tags:
+                - locations
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the location
+                    schema:
+                        type: number
+                    in: path
+                    required: true
                 - locations
             parameters:
                 -
@@ -308,6 +426,8 @@ paths:
                 '204':
                     description: |
                         Succeeded
+                    description: |
+                        Succeeded
                 '404':
                     content:
                         application/json:
@@ -319,9 +439,25 @@ paths:
                     description: location not found
             summary: Deletes location
             description: Deletes location with given id
+                                    value: "\t{\"error\":\"location not found\"}"
+                    description: location not found
+            summary: Deletes location
+            description: Deletes location with given id
     '/prices/{id}':
         get:
             tags:
+                - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
                 - prices
             parameters:
                 -
@@ -344,6 +480,10 @@ paths:
                                     type: string
                             examples:
                                 Full details of a given price:
+                                    value:
+                                        id: 1
+                                        amount: 3000
+                                        currency: "€"
                                     value:
                                         id: 1
                                         amount: 3000
@@ -402,7 +542,55 @@ paths:
             summary: Add full details of price
             description: Adds full details of a given price id
         delete:
+                            $ref: '#/components/schemas/new-price'
+                        examples:
+                            Update price:
+                                value:
+                                    id: 4
+                                    amount: 10000
+                                    origin: "£"
+                required: true
             tags:
+                - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
+            responses:
+                '204':
+                    description: Succeeded
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                error:
+                                    value: "\t{\"error\":\"price not found\"}"
+                    description: price not found
+            summary: Add full details of price
+            description: Adds full details of a given price id
+        delete:
+            tags:
+                - prices
+            parameters:
+                -
+                    examples:
+                        small:
+                            value: '4'
+                    name: id
+                    description: Identificator for the price
+                    schema:
+                        type: number
+                    in: path
+                    required: true
                 - prices
             parameters:
                 -
@@ -790,6 +978,7 @@ components:
                     description: ''
                     type: integer
         Delete-price:
+        Delete-price:
             description: ''
             required:
                 - id
@@ -801,6 +990,7 @@ components:
             example:
                 id: 1
         Delete-seller:
+        Delete-seller:
             description: ''
             required:
                 - id
@@ -811,6 +1001,7 @@ components:
                     type: string
             example:
                 id: 1
+        locations:
         locations:
             description: ''
             required:
@@ -824,13 +1015,26 @@ components:
                 id: 1
         new-car:
             description: '{''brand: ''Ford'',  origin: ''Germany''}'
+        new-car:
+            description: '{''brand: ''Ford'',  origin: ''Germany''}'
             required:
+                - brand
+                - origin
+                - model
+                - year
                 - brand
                 - origin
                 - model
                 - year
             type: object
             properties:
+                origin:
+                    description: ''
+                    type: string
+                brand:
+                    description: ''
+                    type: string
+                model:
                 origin:
                     description: ''
                     type: string
