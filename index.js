@@ -9,11 +9,11 @@ const swaggerDocument = yamljs.load('./docs/swagger.yaml');
 app.use(express.json())
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
-require("./Routes/priceRoutes")(app)
+//require("./Routes/priceRoutes")(app)
 require("./Routes/sellerRoutes")(app)
 require("./Routes/carsRoutes")(app)
 require("./Routes/CarsSellerRoutes")(app)
-require("./Routes/locationRoutes")(app)
+//require("./Routes/locationRoutes")(app)
 
 app.listen(port, () => {
     require("./db").sync()
