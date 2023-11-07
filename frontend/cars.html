@@ -32,12 +32,11 @@
 const vue = Vue.createApp({
   data() {
     return {
-      cars: [
-        {id: 1, brand: 'Ford', model: 'Ford focus', year: 2016, origin: 'Germany'},
-        {id: 2, brand: 'Tesla', model: 'Model S', year: 2016, origin: 'USA'},
-        {id: 3, brand: 'Toyota', model: 'Yaris', year: 2020, origin: 'Japan'}
-      ]
+      cars: []
     }
+  },
+  async created(){
+    this.cars = await (await fetch("http://localhost:8080/cars")).json()
   }
 }).mount('#app')
 
