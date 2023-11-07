@@ -198,9 +198,6 @@ paths:
                 - locations
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '6'
                     name: id
                     description: Identificator for the location
                     schema:
@@ -254,14 +251,10 @@ paths:
                 - locations
             parameters:
                 -
-                    examples:
-                        small:
-                            value: |
-                                4
                     name: id
                     description: Identificator for the location
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -284,9 +277,6 @@ paths:
                 - locations
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '4'
                     name: id
                     description: Identificator for the location
                     schema:
@@ -358,13 +348,10 @@ paths:
                 - prices
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '4'
                     name: id
                     description: Identificator for the price
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -386,13 +373,10 @@ paths:
                 - prices
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '4'
                     name: id
                     description: Identificator for the price
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -422,9 +406,6 @@ paths:
                 - sellers
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '6'
                     name: id
                     description: Identificator for the seller
                     schema:
@@ -479,9 +460,6 @@ paths:
                 - sellers
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '3'
                     name: id
                     description: Identificator for the seller
                     schema:
@@ -507,9 +485,6 @@ paths:
                 - sellers
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '6'
                     name: id
                     description: Identificator for the seller
                     schema:
@@ -603,9 +578,6 @@ paths:
                 - Cars
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '6'
                     name: id
                     description: Identificator for the car
                     schema:
@@ -686,9 +658,6 @@ paths:
                 - Cars
             parameters:
                 -
-                    examples:
-                        small:
-                            value: '6'
                     name: id
                     description: Identificator for the car
                     schema:

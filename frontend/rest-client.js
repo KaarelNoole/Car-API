@@ -1,9 +1,14 @@
-const vue = Vue.createApp({
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import ChildComp from './ChildComp.js'
+    const app = createApp({
+        components: {
+            ChildComp
+        },
     data() {
       return {
         carInModal:{id:null,brand:null,model:null,year:null,origin:null},
-  
-        cars: []
+        cars: [],
+        childMsg: 'No child msg yet'
       }
     },
     async created(){
@@ -16,4 +21,5 @@ const vue = Vue.createApp({
               carInfoModal.show()
           }
     }
-  }).mount('#app')
+  })
+  app.mount('#app')
