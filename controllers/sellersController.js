@@ -1,10 +1,10 @@
 const { db } = require("../db")
-const sellers = db.sellers
+const sellers = db.seller
 const { getBaseurl } = require("./helpers")
 
 // CREATE
 exports.createNew = async (req, res) => {
-    if (!req.body.name || !req.body.price) {
+    if (!req.body.name || !req.body.email || !req.body.phone) {
         return res.status(400).send({ error: "One or all required parameters are missing" })
     }
     const createdSeller = await sellers.create(req.body, {
@@ -16,16 +16,17 @@ exports.createNew = async (req, res) => {
 }
 // READ
 exports.getAll = async (req, res) => {
-    const result = await sellers.findAll({ attributes: ["id","name", "email","phone"] })
+    const result = await sellers.findAll({ attributes: ["id","name","email", "phone"] })
     res.json(result)
 }
-exports.getById = (req, res) => {
-    const foundSeller = sellers.getById(req.params.id)
-    if (foundSeller === undefined) {
+exports.getById = async (req, res) => {
+    const foundSeller = await sellers.findByPk(req.params.id)
+    if (foundSeller === null) {
         return res.status(404).send({ error: `Seller not found` })
     }
-    res.send(foundSeller)
+    res.json(foundSeller)
 }
+
 // UPDATE
 exports.editById = async (req, res) => {
     const updatedResult = await sellers.update({ ...req.body}, {

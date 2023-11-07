@@ -9,10 +9,14 @@ module.exports = (dbConnection, Sequelize) => {
             type: Sequelize.STRING,
             allownull: false
         },
-        Email: {
+        email: {
             type: Sequelize.STRING,
             allownull: false
-        }
+        },
+        phone:{
+            type: Sequelize.STRING,
+            allownull: false
+        } 
     })
     return Seller
 };

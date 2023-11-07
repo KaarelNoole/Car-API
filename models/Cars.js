@@ -9,7 +9,7 @@ module.exports = (dbConnection, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        modeId: {
+        model: {
             type: Sequelize.STRING,
             allowNull: false
         },

@@ -92,18 +92,8 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of sellers:
-                                    value:
-                                        -
-                                            id: 1
-                                            Name: Martin
-                                            Email: martinhobesalu@gmail.com
-                                            Phone: 98347561
-                                        -
-                                            id: 2
-                                            Name: Kaarel
-                                            Email: kaarelnoole@gmail.com
-                                            Phone: 63276615
+                                Empty array:
+                                    value: []
                     description: Successful
             summary: Get a List of sellers
             description: |
@@ -120,10 +110,9 @@ paths:
                         examples:
                             UpdateSeller:
                                 value:
-                                    id: 3
-                                    Name: Karl
-                                    Email: karlnoole@gmail.com
-                                    Phone: 5278921
+                                    name: Karl
+                                    email: karlnoole@gmail.com
+                                    phone: '5278921'
                 required: true
             tags:
                 - sellers
@@ -138,10 +127,10 @@ paths:
                             examples:
                                 CreatedSeller:
                                     value:
-                                        id: 3
-                                        Name: Karl
-                                        Email: karlnoole@gmail.com
-                                        Phone: 5278921
+                                        id: 4
+                                        name: Karl
+                                        email: karlnoole@gmail.com
+                                        phone: '5278921'
                     description: Created new seller
                 '400':
                     content:
@@ -149,10 +138,9 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/error'
                             examples:
-                                Missing params:
-                                    value: >-
-                                        {Name: 'Martin',  Email: 'martinhobesalu@gmail.com', Phone:
-                                        '98347561'}
+                                error:
+                                    value:
+                                        error: missing one or all parameters
                     description: One or all params are missing
             summary: Creates a  seller
             description: Creates a new seller
@@ -174,15 +162,15 @@ paths:
                                         -
                                             id: 1
                                             Amount: 3000
-                                            Currency: "€"
+                                            Currency: €
                                         -
                                             id: 2
                                             Amount: 5000
-                                            Currency: "£"
+                                            Currency: £
                                         -
                                             id: 3
                                             Amount: 4000
-                                            Currency: "€"
+                                            Currency: €
                     description: Returns a list of prices
             summary: Get a list of all prices
             description: Returns a list of all prices in API
@@ -195,7 +183,9 @@ paths:
                             $ref: '#/components/schemas/new-price'
                         examples:
                             NewPrice:
-                                value: "\t{id: 4, amount: '10000', currency: '£'}"
+                                value:
+                                    Amount: 97
+                                    currency: €
                 required: true
             tags:
                 - prices
@@ -212,16 +202,13 @@ paths:
                                     value:
                                         id: 4
                                         amount: 10000
-                                        currency: "£"
+                                        currency: €
                     description: Success
                 '400':
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/new-price'
-                            examples:
-                                Missing params:
-                                    value: '{Amount: ''3000'',  currency: ''£''}'
                     description: One or all params are missing
             summary: Creates a new price
             description: Creates a new model
@@ -361,15 +348,13 @@ paths:
                     content:
                         application/json:
                             schema:
-                                type: array
-                                items:
-                                    type: string
+                                $ref: '#/components/schemas/new-price'
                             examples:
                                 Full details of a given price:
                                     value:
                                         id: 1
                                         amount: 3000
-                                        currency: "€"
+                                        currency: €
                     description: |
                         Returns full details of a given id price
                 '404':
@@ -394,7 +379,7 @@ paths:
                                 value:
                                     id: 4
                                     amount: 10000
-                                    origin: "£"
+                                    origin: £
                 required: true
             tags:
                 - prices
@@ -459,11 +444,11 @@ paths:
                 -
                     examples:
                         small:
-                            value: '3'
+                            value: '6'
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -477,10 +462,10 @@ paths:
                             examples:
                                 Full details of a given seller:
                                     value:
-                                        id: 1
-                                        Name: Kaarel
-                                        Email: kaarelnoole@gmail.com
-                                        Phone: 32708712
+                                        id: 33
+                                        name: Kaarel
+                                        email: kaarelnoole@gmail.com
+                                        phone: '32708712'
                     description: |
                         Returns full details of a given id seller
                 '404':
@@ -505,10 +490,10 @@ paths:
                         examples:
                             New Seller:
                                 value:
-                                    id: 3
-                                    Name: Karl
-                                    Email: karlnoole@gmail.com
-                                    Phone: 5278921
+                                    id: 40
+                                    name: Karl
+                                    email: karlnoole@gmail.com
+                                    phone: '5278921'
                 required: true
             tags:
                 - sellers
@@ -520,7 +505,7 @@ paths:
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -544,11 +529,11 @@ paths:
                 -
                     examples:
                         small:
-                            value: '3'
+                            value: '6'
                     name: id
                     description: Identificator for the seller
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -578,26 +563,8 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of cars:
-                                    value:
-                                        -
-                                            id: 1
-                                            brand: Ford
-                                            model: Ford focus
-                                            year: 2016
-                                            origin: Germany
-                                        -
-                                            id: 2
-                                            brand: Tesla
-                                            model: Model S
-                                            year: 2016
-                                            origin: USA
-                                        -
-                                            id: 3
-                                            brand: Toyota
-                                            model: Yaris
-                                            year: 2020
-                                            origin: Japan
+                                Empty array:
+                                    value: []
                     description: "\t\r\n\r\nSuccessful"
             summary: Get a list of all cars
             description: Returns a list of all car brands in API
@@ -613,7 +580,6 @@ paths:
                         examples:
                             UpdateCar:
                                 value:
-                                    id: 4
                                     brand: Toyota
                                     model: Model Y
                                     year: 2022
@@ -631,9 +597,12 @@ paths:
                                     type: string
                             examples:
                                 CreatedCar:
-                                    value: >-
-                                        {id: 4, brand: 'Toyota', model: 'Model Y', year: 2022, origin:
-                                        'China'}
+                                    value:
+                                        id: 4
+                                        brand: Toyota
+                                        model: Model Y
+                                        year: 2022
+                                        origin: China
                     description: Success
                 '400':
                     content:
@@ -642,10 +611,9 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 error:
-                                    value: "\t{\"error\":\"Car not found\"}"
+                                    value:
+                                        error: missing one or all parameters
                     description: One or all params are missing
-                '500':
-                    description: 'Internal Server error, Try again later'
             summary: Creates a car
             description: |
                 Creates a new car
@@ -661,7 +629,7 @@ paths:
                     name: id
                     description: Identificator for the car
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -675,14 +643,14 @@ paths:
                             examples:
                                 Single Car:
                                     value:
-                                        id: 2
+                                        id: 33
                                         brand: Tesla
                                         model: Model S
                                         year: 2016
                                         origin: USA
                     description: |
                         Successful
-                '400':
+                '404':
                     content:
                         application/json:
                             schema:
@@ -706,26 +674,14 @@ paths:
                         examples:
                             Update Car:
                                 value:
-                                    id: 6
+                                    id: 40
                                     brand: Tesla
                                     model: Cybertruck
-                                    year: '2025'
+                                    year: 2025
                                     origin: USA
                 required: true
             tags:
                 - Cars
-            parameters:
-                -
-                    examples:
-                        small:
-                            value: |
-                                6
-                    name: id
-                    description: Identificator for the car
-                    schema:
-                        type: number
-                    in: path
-                    required: true
             responses:
                 '204':
                     description: |
@@ -756,7 +712,7 @@ paths:
                     name: id
                     description: Identificator for the car
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -774,6 +730,13 @@ paths:
                     description: Car not found
             summary: Deletes car
             description: Deletes car with given id
+        parameters:
+            -
+                name: id
+                schema:
+                    type: integer
+                in: path
+                required: true
 components:
     schemas:
         error:
@@ -807,7 +770,7 @@ components:
             properties:
                 Amount:
                     description: ''
-                    type: number
+                    type: integer
                 currency:
                     description: ''
                     type: string
@@ -881,7 +844,7 @@ components:
                     type: string
                 year:
                     description: ''
-                    type: integer
+                    type: number
         car:
             description: ''
             required:
