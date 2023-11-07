@@ -17,20 +17,8 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of locations:
-                                    value:
-                                        -
-                                            id: 1
-                                            City: Tallinn
-                                            Country: Estonia
-                                        -
-                                            id: 2
-                                            City: Berlin
-                                            Country: Germany
-                                        -
-                                            id: 3
-                                            City: Moscow
-                                            Country: Russia
+                                Empty array:
+                                    value: []
                     description: Successful
             summary: List of Locations
             description: |
@@ -47,9 +35,8 @@ paths:
                         examples:
                             CreatedLocation:
                                 value:
-                                    id: 4
-                                    City: Tokyo
-                                    Country: Japan
+                                    city: Tokyo
+                                    country: Japan
                 required: true
             tags:
                 - locations
@@ -65,8 +52,8 @@ paths:
                                 CreatedLocation:
                                     value:
                                         id: 4
-                                        City: Tokyo
-                                        Country: Japan
+                                        city: Tokyo
+                                        country: Japan
                     description: Success
                 '400':
                     content:
@@ -75,7 +62,8 @@ paths:
                                 $ref: '#/components/schemas/error'
                             examples:
                                 Missing params:
-                                    value: "\t{\"error\":\"Location not found\"}"
+                                    value:
+                                        error: missing one or all parameters
                     description: One or all params are missing
             summary: Creates a location
             description: Creates a new location
@@ -157,21 +145,9 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                List of Prices:
-                                    value:
-                                        -
-                                            id: 1
-                                            Amount: 3000
-                                            Currency: €
-                                        -
-                                            id: 2
-                                            Amount: 5000
-                                            Currency: £
-                                        -
-                                            id: 3
-                                            Amount: 4000
-                                            Currency: €
-                    description: Returns a list of prices
+                                Empty Array:
+                                    value: []
+                    description: Successful
             summary: Get a list of all prices
             description: Returns a list of all prices in API
         post:
@@ -184,7 +160,7 @@ paths:
                         examples:
                             NewPrice:
                                 value:
-                                    Amount: 97
+                                    amount: 97
                                     currency: €
                 required: true
             tags:
@@ -208,7 +184,11 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-price'
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                error:
+                                    value:
+                                        error: missing one or all parameters
                     description: One or all params are missing
             summary: Creates a new price
             description: Creates a new model
@@ -220,11 +200,11 @@ paths:
                 -
                     examples:
                         small:
-                            value: '4'
+                            value: '6'
                     name: id
                     description: Identificator for the location
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -238,9 +218,9 @@ paths:
                             examples:
                                 Single location:
                                     value:
-                                        id: 2
-                                        City: Berlin
-                                        Country: Germany
+                                        id: 33
+                                        city: Berlin
+                                        country: Germany
                     description: |+
                         Successful
 
@@ -266,9 +246,9 @@ paths:
                         examples:
                             New Location:
                                 value:
-                                    id: 4
-                                    City: Tokyo
-                                    Country: Japan
+                                    id: 40
+                                    city: Tokyo
+                                    country: Japan
                 required: true
             tags:
                 - locations
@@ -310,7 +290,7 @@ paths:
                     name: id
                     description: Identificator for the location
                     schema:
-                        type: number
+                        type: integer
                     in: path
                     required: true
             responses:
@@ -332,27 +312,18 @@ paths:
         get:
             tags:
                 - prices
-            parameters:
-                -
-                    examples:
-                        small:
-                            value: '4'
-                    name: id
-                    description: Identificator for the price
-                    schema:
-                        type: number
-                    in: path
-                    required: true
             responses:
                 '200':
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/new-price'
+                                type: array
+                                items:
+                                    type: string
                             examples:
                                 Full details of a given price:
                                     value:
-                                        id: 1
+                                        id: 33
                                         amount: 3000
                                         currency: €
                     description: |
@@ -373,11 +344,13 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/new-price'
+                            type: array
+                            items:
+                                type: string
                         examples:
                             Update price:
                                 value:
-                                    id: 4
+                                    id: 40
                                     amount: 10000
                                     origin: £
                 required: true
@@ -436,6 +409,13 @@ paths:
                     description: price not found
             summary: Deletes price
             description: Deletes price with given id
+        parameters:
+            -
+                name: id
+                schema:
+                    type: integer
+                in: path
+                required: true
     '/sellers/{id}':
         get:
             tags:
