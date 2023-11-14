@@ -20,7 +20,10 @@ require("./Routes/sellerRoutes")(app)
 
 app.listen(port, () => {
     require("./db").sync()
-    .then(console.log("Synchronized"))
-    .catch((error) => console.log("Error:", error))
-    console.log(`API up at: http://localhost:${port}/docs`);
+    .then(() => {
+        console.log("Sync succeeded!")
+        console.log(`API up at: http://localhost:${port}/docs`)
+        console.log(`API up at: http://localhost:${port}/client`)
+    })
+    .catch((error) => console.log("Sync failed:\n", error))
 })

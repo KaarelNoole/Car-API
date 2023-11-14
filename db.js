@@ -32,9 +32,53 @@ db.seller.hasMany(db.CarsSellers)
 db.CarsSellers.belongsTo(db.cars)
 db.CarsSellers.belongsTo(db.seller)
 
-sync = async ()=>{
-  //await sequelize.sync({ force: true }) // Erase all and recreate
-  await sequelize.sync({ alter: true }) // Alter existing to match the model
+sync = async () => {
+  if (process.env.DROP_DB === "true") {
+      console.log("Begin DROP")
+      await db.connection.query('SET FOREIGN_KEY_CHECKS = 0')
+      console.log("Checks disabled")
+      await db.connection.sync({ force: true })
+      console.log('Database synchronised.')
+      await db.connection.query('SET FOREIGN_KEY_CHECKS = 1')
+      console.log("Checks enabled")
+
+      const [car, createdG] = await db.car.findOrCreate({
+          where: {
+              brand: "Tesla"
+          },
+          defaults: {
+              brand: "Tesla",
+              model: "Model x",
+              year: 2019,
+              origin: "USA"
+          }
+      })
+      console.log("car created: ", createdG)
+      const [Seller, createdP] = await db.seller.findOrCreate({
+          where: {
+              name: "Kaarel Noole"
+          },
+          defaults: {
+              name: "Kaarel Noole"
+          }
+      })
+      console.log("seller created: ", createdP)
+      const [CarsSeller, createdGP] = await db.CarsSellers.findOrCreate({
+          where: {
+              id: 1
+          },
+          defaults: {
+              CarId: car.id,
+              SellerId: seller.id,
+          }
+      })
+      console.log("carsSeller created: ", createdGP)
+  }
+  else {
+      console.log("Begin ALTER")
+      await db.connection.sync({ alter: true }) // Alter existing to match the model
+      console.log('Database synchronised.')
+  }
 }
 
 module.exports = { db, sync }
