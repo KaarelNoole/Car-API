@@ -8,15 +8,15 @@ export default {
             <th>Year</th>
             <th>Origin</th>
         </tr>
-        <tr v-for="car in cars>
+        <tr v-for="car in cars">
             <td @click="getCar(car.id)">{{car.brand}}</td>
             <td>{{car.model}}</td>
             <td>{{car.year}}</td>
             <td>{{car.origin}}</td>
         </tr>
-    <table>
+    </table>
     `,
-   emits: ["showModal"],
+    emits: ["showModal"],
     data() {
         return {
             cars: []
@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         getCar: async function (id) {
-           const carInfoModal = await (await fetch(this.API_URL + "/cars/" + id)).json()
+            const carInModal = await (await fetch(this.API_URL + "/cars/" + id)).json()
             this.$emit("showModal", carInModal)
         }
     }

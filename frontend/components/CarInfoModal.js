@@ -1,11 +1,11 @@
 export default {
     /*html*/
-    tempalate: `
-<div id="carInfoModal" class="modal" tabindex="-1>
+    template: `
+<div id="carInfoModal" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped">
@@ -33,9 +33,9 @@ export default {
                         <td v-if="isEditing"><input v-model="modifiedCar.origin"></td>
                         <td v-else>{{carInModal.origin}}</td>
                     </tr>
-                <table>
+                </table>
             </div>
-            <div class="modal-footer>
+            <div class="modal-footer">
                 <template v-if="isEditing">
                     <button type="button" class="btn btn-success" @click="saveModifiedCar">Save</button>
                     <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
@@ -60,8 +60,8 @@ export default {
         }
     },
     methods: {
-        startEditing(){
-            this.modifiedCar = {...this.carInModal}
+        startEditing() {
+            this.modifiedCar = { ...this.carInModal }
             this.isEditing = true
         },
         cancelEditing() {

@@ -1,5 +1,5 @@
 module.exports = (dbConnection, Sequelize) => {
-    const Game = dbConnection.define("Game", {
+    const Car = dbConnection.define("Game", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
