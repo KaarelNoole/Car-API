@@ -16,12 +16,7 @@ export default {
         </tr>
     <table>
     `,
-    emits: {
-        showModal: (car) => {
-            console.log("Validation", car)
-            return car.id && car.brand && car.model && car.year && car.origin
-        }
-    },
+   emits: ["showModal"],
     data() {
         return {
             cars: []
@@ -32,8 +27,7 @@ export default {
     },
     methods: {
         getCar: async function (id) {
-            const carInModal = await (await fetch("http://localhost:8080/cars" + id)).json()
-            console.log("CarsList: ", carInModal)
+           const carInfoModal = await (await fetch(this.API_URL + "/cars/" + id)).json()
             this.$emit("showModal", carInModal)
         }
     }
