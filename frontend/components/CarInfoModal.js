@@ -37,11 +37,13 @@ export default {
                 </table>
             </div>
             
-            <div class="modal-footer">
+            <div class="modal-footer container">
                 <template v-if="isEditing">
-                    <button type="button" class="btn btn-danger" @click="startDeleting" >Delete</button>
-                    <button type="button" class="btn btn-success" @click="saveModifiedCar">Save</button>
+                <div class="row">
+                    <button type="button" class="btn btn-danger mr-auto" @click="startDeleting" >Delete</button>
+                    <button type="button" class="btn btn-success ml-auto" @click="saveModifiedCar">Save</button>
                     <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
+                    </div>
                 </template>
                 <template v-else>
                     <button type="button" class="btn btn-warning" @click="startEditing">Edit</button>
