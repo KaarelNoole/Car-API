@@ -35,10 +35,12 @@ export default {
                     </tr>
                 </table>
             </div>
+            
             <div class="modal-footer">
                 <template v-if="isEditing">
                     <button type="button" class="btn btn-success" @click="saveModifiedCar">Save</button>
                     <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
+                    <button type="button" class="btn btn-danger" @click="deleteCar">Delete</button>
                 </template>
                 <template v-else>
                     <button type="button" class="btn btn-warning" @click="startEditing">Edit</button>
@@ -80,6 +82,9 @@ export default {
             console.log(rawResponse);
             this.$emit("carUpdated", this.modifiedCar)
             this.isEditing = false
+        },
+        startDeleting(){
+            
         }
     }
 }
