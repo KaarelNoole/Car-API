@@ -1,3 +1,4 @@
+import confirmationModal from "./ConfirmationModal.js"
 
 export default {
     /*html*/
@@ -37,24 +38,37 @@ export default {
                 </table>
             </div>
             
-            <div class="modal-footer container">
-                <template v-if="isEditing">
-                <div class="row">
-                    <button type="button" class="btn btn-danger mr-auto" @click="startDeleting" >Delete</button>
-                    <button type="button" class="btn btn-success ml-auto" @click="saveModifiedCar">Save</button>
-                    <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
+            <div class="modal-footer">
+                <div class="container">
+                    <div class="row">
+                        <template v-if="isEditing">
+                            <div class="col me-auto">
+                                <button type="button" class="btn btn-danger" data-bs-target="#confirmationModal" data-bs-toggle="modal">Delete</button>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-success mx-2" @click="saveModifiedCar">Save</button>
+                                <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="col me-auto"></div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-warning mx-2" @click="startEditing">Edit</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </template>
                     </div>
-                </template>
-                <template v-else>
-                    <button type="button" class="btn btn-warning" @click="startEditing">Edit</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </template>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<confirmation-modal :target="'#carInfoModal'" @confirmed="deleteCar"></confirmation-modal>
     `,
-    emits: ["carUpdated", "carDeleted"],
+    components: {
+        confirmationModal
+    },
+    emits: ["carUpdated"],
     props: {
         carInModal: {}
     },
@@ -86,27 +100,8 @@ export default {
             this.$emit("carUpdated", this.modifiedCar)
             this.isEditing = false
         },
-        startDeleting(){
-            if (confirm("Are you sure you want to delete this car")){
-                fetch(this.API_URL + "/cars/"+ this.carInModal.id,{
-                    method: 'DELETE',
-                    headers: {
-                        'Accept' : 'application/json',
-                        'Content-Type' : 'application/json'
-                    }
-                })
-                .then(response => {
-                    if(response.ok) {
-                        console.log("Car deleted successfully")
-                        this.$emit("carDeleted", this.carInModal.id);
-                    } else{
-                        console.error("Failed to delete car");
-                    }
-                })
-                .catch (error => {
-                    console.error("Error occurred while deleting car:", error );
-                });
-            }
+        deleteCar() {
+            console.log("DELETE confirmed");
         }
     }
 }

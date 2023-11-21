@@ -2,21 +2,21 @@ export default {
     /*html*/
     template: `
     <table id=carsTable class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Origin</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Origin</th>
+            </tr>
         </thead>
         <tbody>
-        <tr v-for="car in cars">
-            <td @click="getCar(car.id)">{{car.brand}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.year}}</td>
-            <td>{{car.origin}}</td>
-        </tr>
+            <tr v-for="car in cars">
+                <td @click="getCar(car.id)">{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.origin}}</td>
+            </tr>
         </tbody>
     </table>
     `,
