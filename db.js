@@ -42,7 +42,7 @@ sync = async () => {
       await db.connection.query('SET FOREIGN_KEY_CHECKS = 1')
       console.log("Checks enabled")
 
-      const [car, createdG] = await db.car.findOrCreate({
+      const [car, createdC] = await db.car.findOrCreate({
           where: {
               brand: "Tesla"
           },
@@ -53,8 +53,8 @@ sync = async () => {
               origin: "USA"
           }
       })
-      console.log("car created: ", createdG)
-      const [Seller, createdP] = await db.seller.findOrCreate({
+      console.log("car created: ", createdC)
+      const [Seller, createdS] = await db.seller.findOrCreate({
           where: {
               name: "Kaarel Noole"
           },
@@ -62,8 +62,8 @@ sync = async () => {
               name: "Kaarel Noole"
           }
       })
-      console.log("seller created: ", createdP)
-      const [CarsSeller, createdGP] = await db.CarsSellers.findOrCreate({
+      console.log("seller created: ", createdS)
+      const [CarsSeller, createdCS] = await db.CarsSellers.findOrCreate({
           where: {
               id: 1
           },
@@ -72,7 +72,7 @@ sync = async () => {
               SellerId: seller.id,
           }
       })
-      console.log("carsSeller created: ", createdGP)
+      console.log("carsSeller created: ", createdCS)
   }
   else {
       console.log("Begin ALTER")

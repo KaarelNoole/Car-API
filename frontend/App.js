@@ -1,30 +1,13 @@
-import carList from "./components/CarList.js"
-import carInfoModal from "./components/CarInfoModal.js"
 export default {
     /*html*/
     template: `
-    <car-list :key="update" @showModal="openModal"></car-list>
-    <car-info-modal @carUpdated="updateView" :carInModal="carInModal"></car-info-modal>
+    <h1>Hello App!</h1>
+    <p>
+      <router-link to="/cars">Go to Cars List</router-link>
+      <router-link to="/sellers">Go to Sellers Lists</router-link>
+    </p>
+    <router-view></router-view>
     `,
     components: {
-        carList,
-        carInfoModal
-    },
-    data() {
-        return {
-            update: 0,
-            carInModal: { id: "", brand: "", model: "", year: "", origin: "" }
-        }
-    },
-    methods: {
-        openModal(car){
-            this.carInModal = car
-            let carInfoModal = new bootstrap.Modal(document.getElementById("carInfoModal"))
-            carInfoModal.show()
-        },
-        updateView(car) {
-            this.update++
-            this.carInModal = car
-        }
     }
 }
