@@ -1,3 +1,4 @@
+
 export default {
     /*html*/
     template: `
@@ -38,9 +39,9 @@ export default {
             
             <div class="modal-footer">
                 <template v-if="isEditing">
+                    <button type="button" class="btn btn-danger" @click="startDeleting" >Delete</button>
                     <button type="button" class="btn btn-success" @click="saveModifiedCar">Save</button>
                     <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
-                    <button type="button" class="btn btn-danger" @click="deleteCar">Delete</button>
                 </template>
                 <template v-else>
                     <button type="button" class="btn btn-warning" @click="startEditing">Edit</button>
@@ -51,7 +52,7 @@ export default {
     </div>
 </div>
     `,
-    emits: ["carUpdated"],
+    emits: ["carUpdated", "carDeleted"],
     props: {
         carInModal: {}
     },
@@ -84,7 +85,26 @@ export default {
             this.isEditing = false
         },
         startDeleting(){
-            
+            if (confirm("Are you sure you want to delete this car")){
+                fetch(this.API_URL + "/cars/"+ this.carInModal.id,{
+                    method: 'DELETE',
+                    headers: {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/json'
+                    }
+                })
+                .then(response => {
+                    if(response.ok) {
+                        console.log("Car deleted successfully")
+                        this.$emit("carDeleted", this.carInModal.id);
+                    } else{
+                        console.error("Failed to delete car");
+                    }
+                })
+                .catch (error => {
+                    console.error("Error occurred while deleting car:", error );
+                });
+            }
         }
     }
 }
