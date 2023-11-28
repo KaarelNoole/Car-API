@@ -18,12 +18,12 @@ export default {
                        <tr>
                            <th>City</th>
                            <td v-if="isEditing"><input v-model="modifiedLocation.city"></td>
-                           <td v-else>{{locationInModal.name}}</td>
+                           <td v-else>{{locationInModal.city}}</td>
                        </tr>
                        <tr>
                            <th>Country</th>
                            <td v-if="isEditing"><input v-model="modifiedLocation.country"></td>
-                           <td v-else>{{locationInModal.email}}</td>
+                           <td v-else>{{locationInModal.country}}</td>
                        </tr>
                    </table>
                </div>
