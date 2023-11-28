@@ -1,5 +1,5 @@
-import sellerList from "../components/SellerList.js"
-import sellerInfoModal from "../components/SellerInfoModal.js"
+import sellerList from "../components/Seller/SellerList.js"
+import sellerInfoModal from "../components/Seller/SellerInfoModal.js"
 export default {
     /*html*/
     template: `

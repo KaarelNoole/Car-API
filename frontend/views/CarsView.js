@@ -1,5 +1,5 @@
-import carList from "../components/CarList.js"
-import carInfoModal from "../components/CarInfoModal.js"
+import carList from "../components/Car/CarList.js"
+import carInfoModal from "../components/Car/CarInfoModal.js"
 export default {
     /*html*/
     template: `
