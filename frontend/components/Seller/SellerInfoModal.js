@@ -94,8 +94,19 @@ export default {
             this.$emit("sellerUpdated", this.modifiedSeller)
             this.isEditing = false
         },
-        deleteSeller(){
-            console.log("DELETE confirmed");
+       async deleteSeller(){
+            console.log("Deleting:", this.modifiedSeller);
+            const rawResponse = await fetch(this.API_URL + "/sellers/" + this.modifiedSeller.id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.modifiedSeller)
+            });
+                console.log(rawResponse);
+                this.$emit("sellerUpdated", this.modifiedSeller)
+                this.isEditing = false
         }
     }
 }

@@ -89,8 +89,19 @@ methods: {
         this.$emit("locationUpdated", this.modifiedLocation)
         this.isEditing = false
     },
-    deleteLocation(){
-        console.log("DELETE confirmed");
+    async deleteLocation(){
+        console.log("Deleting:", this.modifiedLocation);
+            const rawResponse = await fetch(this.API_URL + "/locations/" + this.modifiedLocation.id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.modifiedLocation)
+            });
+                console.log(rawResponse);
+                this.$emit("locationUpdated", this.modifiedLocation)
+                this.isEditing = false
     }
 }
 }

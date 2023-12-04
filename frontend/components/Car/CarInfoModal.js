@@ -100,8 +100,19 @@ export default {
             this.$emit("carUpdated", this.modifiedCar)
             this.isEditing = false
         },
-        deleteCar() {
-            console.log("DELETE confirmed");
+        async deleteCar() {
+            console.log("Deleting:", this.modifiedCar);
+            const rawResponse = await fetch(this.API_URL + "/cars/" + this.modifiedCar.id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.modifiedCar)
+            });
+                console.log(rawResponse);
+                this.$emit("carUpdated", this.modifiedCar)
+                this.isEditing = false
         }
     }
 }
