@@ -3,29 +3,15 @@ import confirmationModal from "../ConfirmationModal.js";
 export default {
     /*html*/
     template: `
-<div id="priceInfoModal" class="modal" tabindex="-1">
+    <div id="priceInfoModal" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Id</th>
-                        <td>{{priceInModal.id}}</td>
-                    </tr>
-                    <tr>
-                        <th>Currency</th>
-                        <td v-if="isEditing"><input v-model="modifiedprice.currency"></td>
-                        <td v-else>{{priceInModal.currency}}</td>
-                    </tr>
-                    <tr>
-                        <th>Amount</th>
-                        <td v-if="isEditing"><input v-model="modifiedprice.amount"></td>
-                        <td v-else>{{priceInModal.amount}}</td>
-                    </tr>
-                </table>
+                <price-form v-if="isEditing" :id="modifiedPrice.id" v-model:brand="modifiedPrice.brand" v-model:model="modifiedPrice.model" v-model:year="modifiedPrice.year" v-model:origin="modifiedPrice.origin"></price-form>
+                <price-details v-else :priceInModal="priceInModal"></price-details>
             </div>
             
             <div class="modal-footer">
@@ -36,7 +22,7 @@ export default {
                                 <button type="button" class="btn btn-danger" data-bs-target="#confirmationModal" data-bs-toggle="modal">Delete</button>
                             </div>
                             <div class="col-auto">
-                                <button type="button" class="btn btn-success mx-2" @click="saveModifiedprice">Save</button>
+                                <button type="button" class="btn btn-success mx-2" @click="saveModifiedPrice">Save</button>
                                 <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
                             </div>
                         </template>
