@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #b7afaf;
+    color: #333; 
+  }
+  
+  .top-left-text {
+    color: #2980b9;
+    text-shadow: 1px 1px 2px #3498db;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
