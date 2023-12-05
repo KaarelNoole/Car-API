@@ -47,7 +47,7 @@ export default {
         carForm,
         carDetails
     },
-    emits: ["carUpdated"],
+    emits: ["carUpdated","confirmationModal"],
     props: {
         carInModal: {}
     },
@@ -90,7 +90,7 @@ export default {
                 body: JSON.stringify(this.modifiedCar)
             });
                 console.log(rawResponse);
-                this.$emit("carUpdated", this.modifiedCar)
+                this.$emit("confirmationModal", this.modifiedCar)
                 this.isEditing = false
         }
     }

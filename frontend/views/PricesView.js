@@ -54,8 +54,8 @@ export default {
                 body: JSON.stringify(this.priceInModal)
             });
             if (rawResponse.ok){
-                this.newpriceModal.hide()
-                this. update++
+                this.newPriceModal.hide()
+                this.update++
             }
             else {
                 const errorResponse = await rawResponse.json()
