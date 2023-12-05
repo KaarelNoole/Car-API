@@ -1,5 +1,6 @@
 import confirmationModal from "../ConfirmationModal.js"
-
+import carForm from "../Car/CarForm.js"
+import carDetails from "../Car/CarDetails.js"
 export default {
     /*html*/
     template: `
@@ -10,32 +11,8 @@ export default {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Id</th>
-                        <td>{{carInModal.id}}</td>
-                    </tr>
-                    <tr>
-                        <th>Brand</th>
-                        <td v-if="isEditing"><input v-model="modifiedCar.brand"></td>
-                        <td v-else>{{carInModal.brand}}</td>
-                    </tr>
-                    <tr>
-                        <th>Model</th>
-                        <td v-if="isEditing"><input v-model="modifiedCar.model"></td>
-                        <td v-else>{{carInModal.model}}</td>
-                    </tr>
-                    <tr>
-                        <th>Year</th>
-                        <td v-if="isEditing"><input v-model="modifiedCar.year"></td>
-                        <td v-else>{{carInModal.year}}</td>
-                    </tr>
-                    <tr>
-                        <th>Origin</th>
-                        <td v-if="isEditing"><input v-model="modifiedCar.origin"></td>
-                        <td v-else>{{carInModal.origin}}</td>
-                    </tr>
-                </table>
+                <car-form v-if="isEditing" :id="modifiedCar.id" v-model:brand="modifiedCar.brand" v-model:model="modifiedCar.model" v-model:year="modifiedCar.year" v-model:origin="modifiedCar.origin"></car-form>
+                <car-details v-else :carInModal="carInModal"></car-details>
             </div>
             
             <div class="modal-footer">
@@ -66,7 +43,9 @@ export default {
 <confirmation-modal :target="'#carInfoModal'" @confirmed="deleteCar"></confirmation-modal>
     `,
     components: {
-        confirmationModal
+        confirmationModal,
+        carForm,
+        carDetails
     },
     emits: ["carUpdated"],
     props: {
