@@ -12,8 +12,8 @@ export default {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <seller-form v-if="isEditing" :id="modifiedSeller.id" v-model:brand="modifiedSeller.brand" v-model:model="modifiedCar.model" v-model:year="modifiedSeller.year" v-model:origin="modifiedSeller.origin"></seller-form>
-            <seller-details v-else :carInModal="carInModal"></seller-details>
+            <seller-form v-if="isEditing" :id="modifiedSeller.id" v-model:name="modifiedSeller.name" v-model:email="modifiedSeller.email" v-model:phone="modifiedSeller.phone"></seller-form>
+            <seller-details v-else :sellerInModal="sellerInModal"></seller-details>
             </div>
             <div class="modal-footer">
             <div class="container">

@@ -1,4 +1,6 @@
 import confirmationModal from "../ConfirmationModal.js";
+import priceForm from "../Price/PriceForm.js"
+import priceDetails from "../Price/PriceDetails.js";
 
 export default {
     /*html*/
@@ -10,7 +12,7 @@ export default {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <price-form v-if="isEditing" :id="modifiedPrice.id" v-model:brand="modifiedPrice.brand" v-model:model="modifiedPrice.model" v-model:year="modifiedPrice.year" v-model:origin="modifiedPrice.origin"></price-form>
+                <price-form v-if="isEditing" :id="modifiedprice.id" v-model:amount="modifiedprice.amount" v-model:currency="modifiedprice.currency"></price-form>
                 <price-details v-else :priceInModal="priceInModal"></price-details>
             </div>
             
@@ -22,7 +24,7 @@ export default {
                                 <button type="button" class="btn btn-danger" data-bs-target="#confirmationModal" data-bs-toggle="modal">Delete</button>
                             </div>
                             <div class="col-auto">
-                                <button type="button" class="btn btn-success mx-2" @click="saveModifiedPrice">Save</button>
+                                <button type="button" class="btn btn-success mx-2" @click="saveModifiedprice">Save</button>
                                 <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
                             </div>
                         </template>
@@ -42,7 +44,10 @@ export default {
 <confirmation-modal :target="'#priceInfoModal'" @confirmed="deleteprice"></confirmation-modal>
     `,
     components: {
-        confirmationModal
+        confirmationModal,
+        priceForm,
+        priceDetails
+
     },
     emits: ["priceUpdated"],
     props: {

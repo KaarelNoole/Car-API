@@ -1,7 +1,7 @@
 export default {
     /*html*/
     template: `
-    <div id="objectInfoModal" class="modal" tabindex="-1">
+<div id="objectInfoModal" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -25,5 +25,5 @@ export default {
     </div>
 </div>
     `,
-    emits:["save"]
+    emits: ["save"]
 }

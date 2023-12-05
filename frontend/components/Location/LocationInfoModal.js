@@ -1,16 +1,18 @@
 import confirmationModal from "../ConfirmationModal.js";
+import locationForm from "../Location/LocationForm.js"
+import locationDetails from "../Location/LocationDetails.js"
 
 export default {
    /*html*/
    template: `
-   <div id="LocationInfoModal" class="modal" tabindex="-1">
+   <div id="locationInfoModal" class="modal" tabindex="-1">
    <div class="modal-dialog">
        <div class="modal-content">
            <div class="modal-header">
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
            <div class="modal-body">
-               <location-form v-if="isEditing" :id="modifiedLocation.id" v-model:brand="modifiedLocation.brand" v-model:model="modifiedLocation.model" v-model:year="modifiedLocation.year" v-model:origin="modifiedLocation.origin"></location-form>
+               <location-form v-if="isEditing" :id="modifiedLocation.id" v-model:city="modifiedLocation.city" v-model:country="modifiedLocation.country"></location-form>
                <location-details v-else :locationInModal="locationInModal"></location-details>
            </div>
            
@@ -22,7 +24,7 @@ export default {
                                <button type="button" class="btn btn-danger" data-bs-target="#confirmationModal" data-bs-toggle="modal">Delete</button>
                            </div>
                            <div class="col-auto">
-                               <button type="button" class="btn btn-success mx-2" @click="saveModifiedlocation">Save</button>
+                               <button type="button" class="btn btn-success mx-2" @click="saveModifiedLocation">Save</button>
                                <button type="button" class="btn btn-secondary" @click="cancelEditing">Cancel</button>
                            </div>
                        </template>
@@ -42,7 +44,9 @@ export default {
    <confirmation-modal :target="'#locationInfoModal'" @confirmed="deleteLocation"></confirmation-modal>
    ` ,
    components: {
-    confirmationModal
+    confirmationModal,
+    locationForm,
+    locationDetails
 },
 emits: ["locationUpdated"],
 props: {

@@ -8,7 +8,7 @@ export default {
     <button class="btn btn-secondary" @click="newprice">New price</button>
     <price-list :key="update" @showModal="openModal"></price-list>
     <price-info-modal @priceUpdated="updateView" :priceInModal="priceInModal"></price-info-modal>
-    <new-object-modal id="newpriceModal" @save="saveNewprice">
+    <new-object-modal id="newPriceModal" @save="saveNewprice">
         <price-form v-model:amount="priceInModal.amount" v-model:currency="priceInModal.currency"></price-form>
         <div class="alert alert-danger" role="alert" v-show="error">{{error}}</div>
     </new-object-modal>
@@ -36,8 +36,8 @@ export default {
         newprice(){
             this.error= ""
             this.priceInModal = {}
-            this.newpriceModal = new bootstrap.Modal(document.getElementById("newpriceModal"))
-            this.newpriceModal.show()
+            this.newPriceModal = new bootstrap.Modal(document.getElementById("newPriceModal"))
+            this.newPriceModal.show()
         },
         updateView(price) {
             this.update++

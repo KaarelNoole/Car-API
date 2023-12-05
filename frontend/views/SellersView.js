@@ -5,10 +5,10 @@ import sellerForm from "../components/Seller/SellerForm.js"
 export default {
     /*html*/
     template: `
-    <button class="btn btn-secondary" @click="newseller">New seller</button>
+    <button class="btn btn-secondary" @click="newSeller">New seller</button>
     <seller-list :key="update" @showModal="openModal"></seller-list>
     <seller-info-modal @sellerUpdated="updateView" :sellerInModal="sellerInModal"></seller-info-modal>
-    <new-object-modal id="newsellerModal" @save="saveNewseller">
+    <new-object-modal id="newSellerModal" @save="saveNewSeller">
         <seller-form v-model:name="sellerInModal.name" v-model:email="sellerInModal.email" v-model:phone="sellerInModal.phone"></seller-form>
         <div class="alert alert-danger" role="alert" v-show="error">{{error}}</div>
     </new-object-modal>
@@ -36,8 +36,8 @@ export default {
         newSeller(){
             this.error= ""
             this.sellerInModal = {}
-            this.newsellerModal = new bootstrap.Modal(document.getElementById("newsellerModal"))
-            this.newsellerModal.show()
+            this.newSellerModal = new bootstrap.Modal(document.getElementById("newSellerModal"))
+            this.newSellerModal.show()
         },
         updateView(seller) {
             this.update++
@@ -54,8 +54,8 @@ export default {
                 body: JSON.stringify(this.sellerInModal)
             });
             if (rawResponse.ok){
-                this.newsellerModal.hide()
-                this. update++
+                this.newSellerModal.hide()
+                this.update++
             }
             else {
                 const errorResponse = await rawResponse.json()
