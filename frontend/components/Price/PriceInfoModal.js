@@ -82,18 +82,12 @@ export default {
             this.isEditing = false
         },
         async deleteprice() {
-            console.log("Deleting:", this.modifiedprice);
-            const rawResponse = await fetch(this.API_URL + "/prices/" + this.modifiedprice.id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.modifiedprice)
+            console.log("Deleting:", this.priceInModal);
+            fetch(this.API_URL + "/prices/" + this.priceInModal.id, {
+                method: 'DELETE'
             });
-                console.log(rawResponse);
-                this.$emit("priceUpdated", this.modifiedprice)
-                this.isEditing = false
+            this.$emit("carUpdated", {})
+            this.isEditing = false
         }
     }
 }

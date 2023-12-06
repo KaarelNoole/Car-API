@@ -81,18 +81,12 @@ methods: {
         this.isEditing = false
     },
     async deleteLocation(){
-        console.log("Deleting:", this.modifiedLocation);
-            const rawResponse = await fetch(this.API_URL + "/locations/" + this.modifiedLocation.id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.modifiedLocation)
+        console.log("Deleting:", this.locationInModal);
+            fetch(this.API_URL + "/locations/" + this.locationInModal.id, {
+                method: 'DELETE'
             });
-                console.log(rawResponse);
-                this.$emit("locationUpdated", this.modifiedLocation)
-                this.isEditing = false
+            this.$emit("carUpdated", {})
+            this.isEditing = false
     }
 }
 }
