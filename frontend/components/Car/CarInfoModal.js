@@ -47,7 +47,7 @@ export default {
         carForm,
         carDetails
     },
-    emits: ["carUpdated","confirmationModal"],
+    emits: ["carUpdated"],
     props: {
         carInModal: {}
     },
@@ -80,18 +80,12 @@ export default {
             this.isEditing = false
         },
         async deleteCar() {
-            console.log("Deleting:", this.modifiedCar);
-            const rawResponse = await fetch(this.API_URL + "/cars/" + this.modifiedCar.id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.modifiedCar)
+            console.log("Deleting:", this.carInModal);
+            fetch(this.API_URL + "/cars/" + this.carInModal.id, {
+                method: 'DELETE'
             });
-                console.log(rawResponse);
-                this.$emit("confirmationModal", this.modifiedCar)
-                this.isEditing = false
+            this.$emit("carUpdated", {})
+            this.isEditing = false
         }
     }
 }
