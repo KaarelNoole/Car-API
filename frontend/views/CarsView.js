@@ -5,7 +5,7 @@ import carForm from "../components/Car/CarForm.js"
 export default {
     /*html*/
     template: `
-    <button class="btn btn-secondary" @click="newCar">New Car</button>
+    <button class="btn btn-dark" @click="newCar">New Car</button>
     <car-list :key="update" @showModal="openModal"></car-list>
     <car-info-modal @carUpdated="updateView" :carInModal="carInModal"></car-info-modal>
     <new-object-modal id="newCarModal" @save="saveNewCar">

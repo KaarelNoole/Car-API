@@ -3,14 +3,14 @@ const CarsSeller = db.CarsSeller
 const {getBaseur1} = require("./helpers.js")
 //Create
 exports.createNew = (req,res) => {
-    if (!req.body.brand || !req.body.model || !req.body.year || !req.body.origin) {
+    if (!req.body.brand || !req.body.model || !req.body.year || !req.body.origin || !req.body.name  || !req.body.email || !req.body.phone) {
         return res.status(404).send ({Error:"one or more parameters are missing"})
     }
     const createdCar =  CarsSeller.create(req.body,{
-        fields:["brand","model","year","origin"]
+        fields:["brand","model","year","origin", "name", "email", "phone"]
     })
     res.status(201)
-    .location(`${getBaseurl(req)}/cars/${createdCar.id}`)
+    .location(`${getBaseurl(req)}/carsseller/${createdCar.id}`)
     .json(createdCar)
 }
 
@@ -32,13 +32,13 @@ exports.getById = async (req, res) => {
 exports.editById = async (req, res) => {
 const updatedResult = await CarsSeller.update({...req.body}, {
     where: {id: req.params.id},
-    fields:["brand","model","year","origin"]
+    fields:["brand","model","year","origin", "name", "email", "phone"]
 })
 if (updatedResult[0] == 0) {
     return res.status(404).send({ "error": "Car not found"})
 }
 res.status(204)
-.location(`${getBaseurl(req)}/cars/${req.params.id}`)
+.location(`${getBaseurl(req)}/carsseller/${req.params.id}`)
 .send()
 }
 

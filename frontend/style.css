@@ -1,20 +1,109 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
   
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #b7afaf;
-    color: #333; 
-  }
-  
-  .top-left-text {
-    color: #2980b9;
-    text-shadow: 1px 1px 2px #3498db;
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-left: 10px;
-  }
+}
+
+/* Table Styles */
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.modal-dialog {
+  position: relative;
+  max-width: 600px;
+  margin: 10% auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.modal-header, .modal-footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
+.modal-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+/* Navbar Styles */
+.navbar {
+  background-color: rgb(113, 211, 68);
+  padding: 10px 0;
+}
+
+.navbar-toggler {
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('images/auto.jpg');
+  background-size: 2600px 1500px;
+  background-repeat: no-repeat;
+}
