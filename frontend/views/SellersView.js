@@ -5,7 +5,7 @@ import sellerForm from "../components/Seller/SellerForm.js"
 export default {
     /*html*/
     template: `
-    <button class="btn btn-secondary" @click="newSeller">New seller</button>
+    <button class="btn btn-dark" @click="newSeller">New seller</button>
     <seller-list :key="update" @showModal="openModal"></seller-list>
     <seller-info-modal @sellerUpdated="updateView" :sellerInModal="sellerInModal"></seller-info-modal>
     <new-object-modal id="newSellerModal" @save="saveNewSeller">

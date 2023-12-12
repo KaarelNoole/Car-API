@@ -5,7 +5,7 @@ import locationForm from "../components/Location/LocationForm.js"
 export default {
     /*html*/
     template: `
-    <button class="btn btn-secondary" @click="newlocation">New location</button>
+    <button class="btn btn-dark" @click="newlocation">New location</button>
     <location-list :key="update" @showModal="openModal"></location-list>
     <location-info-modal @locationUpdated="updateView" :locationInModal="locationInModal"></location-info-modal>
     <new-object-modal id="newlocationModal" @save="saveNewlocation">

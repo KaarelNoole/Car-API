@@ -5,7 +5,7 @@ import priceForm from "../components/Price/PriceForm.js"
 export default {
     /*html*/
     template: `
-    <button class="btn btn-secondary" @click="newprice">New price</button>
+    <button class="btn btn-dark" @click="newprice">New price</button>
     <price-list :key="update" @showModal="openModal"></price-list>
     <price-info-modal @priceUpdated="updateView" :priceInModal="priceInModal"></price-info-modal>
     <new-object-modal id="newPriceModal" @save="saveNewprice">
