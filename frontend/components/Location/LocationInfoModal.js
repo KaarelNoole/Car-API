@@ -85,7 +85,7 @@ methods: {
             fetch(this.API_URL + "/locations/" + this.locationInModal.id, {
                 method: 'DELETE'
             });
-            this.$emit("carUpdated", {})
+            this.$emit("locationUpdated", {})
             this.isEditing = false
     }
 }

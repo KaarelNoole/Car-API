@@ -3,7 +3,7 @@ export default {
   template: `
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/client">Navbar</a>
+      <a class="navbar-brand" href="/client">Car-Api</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,9 +20,6 @@ export default {
           </li>
           <li class="nav-item">
           <router-link class="nav-link" to="/prices">Prices</router-link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
         </ul>
         <form class="d-flex" role="search">

@@ -86,7 +86,7 @@ export default {
             fetch(this.API_URL + "/prices/" + this.priceInModal.id, {
                 method: 'DELETE'
             });
-            this.$emit("carUpdated", {})
+            this.$emit("priceUpdated", {})
             this.isEditing = false
         }
     }
